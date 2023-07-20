@@ -47,7 +47,6 @@
 		A5083B912A45C14600B3093E /* LMSView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMSView.swift; sourceTree = "<group>"; };
 		A54276862A4387A700EA537C /* RaspisanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RaspisanView.swift; sourceTree = "<group>"; };
 		A551CBC12A40EAE8003FB8ED /* raspisansu.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = raspisansu.entitlements; sourceTree = "<group>"; };
-		A551CBD82A40EE34003FB8ED /* widgetsExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = widgetsExtension.entitlements; sourceTree = "<group>"; };
 		A578094B2A3E4B9E00B7AF6B /* raspisansu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = raspisansu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A578094E2A3E4B9E00B7AF6B /* raspisansuApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = raspisansuApp.swift; sourceTree = "<group>"; };
 		A57809502A3E4B9E00B7AF6B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -83,7 +82,6 @@
 		A57809422A3E4B9E00B7AF6B = {
 			isa = PBXGroup;
 			children = (
-				A551CBD82A40EE34003FB8ED /* widgetsExtension.entitlements */,
 				A578094D2A3E4B9E00B7AF6B /* raspisansu */,
 				A58D080C2A40E6E600AD7A26 /* Frameworks */,
 				A578094C2A3E4B9E00B7AF6B /* Products */,
