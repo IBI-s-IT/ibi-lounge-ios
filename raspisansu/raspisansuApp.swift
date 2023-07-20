@@ -9,9 +9,27 @@ import SwiftUI
 
 @main
 struct raspisansuApp: App {
-    var body: some Scene {
-        WindowGroup {
-            ContentView()
-        }
+  @StateObject var grades = GradesModel()
+  @StateObject var groups = GroupsModel()
+  @StateObject var raspisan = SchedulesModel()
+  
+  var body: some Scene {
+    WindowGroup {
+      ContentView()
+        .environmentObject(grades)
+        .environmentObject(groups)
+        .environmentObject(raspisan)
     }
+    .commands {
+      SidebarCommands()
+    }
+#if os(macOS)
+    Settings {
+      SettingsView()
+        .environmentObject(grades)
+        .environmentObject(groups)
+        .environmentObject(raspisan)
+    }
+#endif
+  }
 }

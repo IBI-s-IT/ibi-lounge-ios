@@ -1,0 +1,19 @@
+version: "Apple Swift version 5.9 (swiftlang-5.9.0.114.10 clang-1500.0.29.1)"
+options: "71baaeb6fccf421784bf6424c0ce1c42c7c297b0b9eafd0aea277d369195163c"
+build_start_time: [1687430155, 36488000]
+build_end_time: [1687430161, 768998000]
+inputs:
+  ? "/Users/g.gorbovskoy/projects/raspisansu/build/raspisansu.build/Release-iphoneos/raspisansu.build/DerivedSources/GeneratedAssetSymbols.swift"
+  : [1687430154, 857712564]
+  "/Users/g.gorbovskoy/projects/raspisansu/raspisansu/Extensions/Dates.swift": [1687375698, 888563806]
+  "/Users/g.gorbovskoy/projects/raspisansu/raspisansu/Model/Day.swift": [1687375698, 900252284]
+  "/Users/g.gorbovskoy/projects/raspisansu/raspisansu/Model/Group.swift": [1687375008, 961653304]
+  "/Users/g.gorbovskoy/projects/raspisansu/raspisansu/Model/GroupModel.swift": [1687375698, 910116593]
+  "/Users/g.gorbovskoy/projects/raspisansu/raspisansu/Model/RaspisanModel.swift": [1687387934, 883480635]
+  "/Users/g.gorbovskoy/projects/raspisansu/raspisansu/Supporting Views/DayView.swift": [1687164907, 348052604]
+  "/Users/g.gorbovskoy/projects/raspisansu/raspisansu/Supporting Views/LessonView.swift": [1687378627, 305171132]
+  "/Users/g.gorbovskoy/projects/raspisansu/raspisansu/Supporting Views/SegmentedControl.swift": [1687165537, 941784720]
+  "/Users/g.gorbovskoy/projects/raspisansu/raspisansu/Views/ContentView.swift": [1687385767, 569725720]
+  "/Users/g.gorbovskoy/projects/raspisansu/raspisansu/Views/RaspisanView.swift": [1687387985, 189248591]
+  "/Users/g.gorbovskoy/projects/raspisansu/raspisansu/Views/SettingsView.swift": [1687202407, 779466119]
+  "/Users/g.gorbovskoy/projects/raspisansu/raspisansu/raspisansuApp.swift": [1687383862, 506515971]

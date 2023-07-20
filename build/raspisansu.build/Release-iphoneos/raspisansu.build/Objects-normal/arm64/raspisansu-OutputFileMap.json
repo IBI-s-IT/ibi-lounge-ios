@@ -1,0 +1,75 @@
+{
+  "" : {
+    "const-values" : "/Users/g.gorbovskoy/projects/raspisansu/build/raspisansu.build/Release-iphoneos/raspisansu.build/Objects-normal/arm64/raspisansu-master.swiftconstvalues",
+    "dependencies" : "/Users/g.gorbovskoy/projects/raspisansu/build/raspisansu.build/Release-iphoneos/raspisansu.build/Objects-normal/arm64/raspisansu-master.d",
+    "diagnostics" : "/Users/g.gorbovskoy/projects/raspisansu/build/raspisansu.build/Release-iphoneos/raspisansu.build/Objects-normal/arm64/raspisansu-master.dia",
+    "emit-module-dependencies" : "/Users/g.gorbovskoy/projects/raspisansu/build/raspisansu.build/Release-iphoneos/raspisansu.build/Objects-normal/arm64/raspisansu-master-emit-module.d",
+    "emit-module-diagnostics" : "/Users/g.gorbovskoy/projects/raspisansu/build/raspisansu.build/Release-iphoneos/raspisansu.build/Objects-normal/arm64/raspisansu-master-emit-module.dia",
+    "swift-dependencies" : "/Users/g.gorbovskoy/projects/raspisansu/build/raspisansu.build/Release-iphoneos/raspisansu.build/Objects-normal/arm64/raspisansu-master.swiftdeps"
+  },
+  "/Users/g.gorbovskoy/projects/raspisansu/build/raspisansu.build/Release-iphoneos/raspisansu.build/DerivedSources/GeneratedAssetSymbols.swift" : {
+    "index-unit-output-path" : "/raspisansu.build/Release-iphoneos/raspisansu.build/Objects-normal/arm64/GeneratedAssetSymbols.o",
+    "llvm-bc" : "/Users/g.gorbovskoy/projects/raspisansu/build/raspisansu.build/Release-iphoneos/raspisansu.build/Objects-normal/arm64/GeneratedAssetSymbols.bc",
+    "object" : "/Users/g.gorbovskoy/projects/raspisansu/build/raspisansu.build/Release-iphoneos/raspisansu.build/Objects-normal/arm64/GeneratedAssetSymbols.o"
+  },
+  "/Users/g.gorbovskoy/projects/raspisansu/raspisansu/Extensions/Dates.swift" : {
+    "index-unit-output-path" : "/raspisansu.build/Release-iphoneos/raspisansu.build/Objects-normal/arm64/Dates.o",
+    "llvm-bc" : "/Users/g.gorbovskoy/projects/raspisansu/build/raspisansu.build/Release-iphoneos/raspisansu.build/Objects-normal/arm64/Dates.bc",
+    "object" : "/Users/g.gorbovskoy/projects/raspisansu/build/raspisansu.build/Release-iphoneos/raspisansu.build/Objects-normal/arm64/Dates.o"
+  },
+  "/Users/g.gorbovskoy/projects/raspisansu/raspisansu/Model/Day.swift" : {
+    "index-unit-output-path" : "/raspisansu.build/Release-iphoneos/raspisansu.build/Objects-normal/arm64/Day.o",
+    "llvm-bc" : "/Users/g.gorbovskoy/projects/raspisansu/build/raspisansu.build/Release-iphoneos/raspisansu.build/Objects-normal/arm64/Day.bc",
+    "object" : "/Users/g.gorbovskoy/projects/raspisansu/build/raspisansu.build/Release-iphoneos/raspisansu.build/Objects-normal/arm64/Day.o"
+  },
+  "/Users/g.gorbovskoy/projects/raspisansu/raspisansu/Model/Group.swift" : {
+    "index-unit-output-path" : "/raspisansu.build/Release-iphoneos/raspisansu.build/Objects-normal/arm64/Group.o",
+    "llvm-bc" : "/Users/g.gorbovskoy/projects/raspisansu/build/raspisansu.build/Release-iphoneos/raspisansu.build/Objects-normal/arm64/Group.bc",
+    "object" : "/Users/g.gorbovskoy/projects/raspisansu/build/raspisansu.build/Release-iphoneos/raspisansu.build/Objects-normal/arm64/Group.o"
+  },
+  "/Users/g.gorbovskoy/projects/raspisansu/raspisansu/Model/GroupModel.swift" : {
+    "index-unit-output-path" : "/raspisansu.build/Release-iphoneos/raspisansu.build/Objects-normal/arm64/GroupModel.o",
+    "llvm-bc" : "/Users/g.gorbovskoy/projects/raspisansu/build/raspisansu.build/Release-iphoneos/raspisansu.build/Objects-normal/arm64/GroupModel.bc",
+    "object" : "/Users/g.gorbovskoy/projects/raspisansu/build/raspisansu.build/Release-iphoneos/raspisansu.build/Objects-normal/arm64/GroupModel.o"
+  },
+  "/Users/g.gorbovskoy/projects/raspisansu/raspisansu/Model/RaspisanModel.swift" : {
+    "index-unit-output-path" : "/raspisansu.build/Release-iphoneos/raspisansu.build/Objects-normal/arm64/RaspisanModel.o",
+    "llvm-bc" : "/Users/g.gorbovskoy/projects/raspisansu/build/raspisansu.build/Release-iphoneos/raspisansu.build/Objects-normal/arm64/RaspisanModel.bc",
+    "object" : "/Users/g.gorbovskoy/projects/raspisansu/build/raspisansu.build/Release-iphoneos/raspisansu.build/Objects-normal/arm64/RaspisanModel.o"
+  },
+  "/Users/g.gorbovskoy/projects/raspisansu/raspisansu/raspisansuApp.swift" : {
+    "index-unit-output-path" : "/raspisansu.build/Release-iphoneos/raspisansu.build/Objects-normal/arm64/raspisansuApp.o",
+    "llvm-bc" : "/Users/g.gorbovskoy/projects/raspisansu/build/raspisansu.build/Release-iphoneos/raspisansu.build/Objects-normal/arm64/raspisansuApp.bc",
+    "object" : "/Users/g.gorbovskoy/projects/raspisansu/build/raspisansu.build/Release-iphoneos/raspisansu.build/Objects-normal/arm64/raspisansuApp.o"
+  },
+  "/Users/g.gorbovskoy/projects/raspisansu/raspisansu/Supporting Views/DayView.swift" : {
+    "index-unit-output-path" : "/raspisansu.build/Release-iphoneos/raspisansu.build/Objects-normal/arm64/DayView.o",
+    "llvm-bc" : "/Users/g.gorbovskoy/projects/raspisansu/build/raspisansu.build/Release-iphoneos/raspisansu.build/Objects-normal/arm64/DayView.bc",
+    "object" : "/Users/g.gorbovskoy/projects/raspisansu/build/raspisansu.build/Release-iphoneos/raspisansu.build/Objects-normal/arm64/DayView.o"
+  },
+  "/Users/g.gorbovskoy/projects/raspisansu/raspisansu/Supporting Views/LessonView.swift" : {
+    "index-unit-output-path" : "/raspisansu.build/Release-iphoneos/raspisansu.build/Objects-normal/arm64/LessonView.o",
+    "llvm-bc" : "/Users/g.gorbovskoy/projects/raspisansu/build/raspisansu.build/Release-iphoneos/raspisansu.build/Objects-normal/arm64/LessonView.bc",
+    "object" : "/Users/g.gorbovskoy/projects/raspisansu/build/raspisansu.build/Release-iphoneos/raspisansu.build/Objects-normal/arm64/LessonView.o"
+  },
+  "/Users/g.gorbovskoy/projects/raspisansu/raspisansu/Supporting Views/SegmentedControl.swift" : {
+    "index-unit-output-path" : "/raspisansu.build/Release-iphoneos/raspisansu.build/Objects-normal/arm64/SegmentedControl.o",
+    "llvm-bc" : "/Users/g.gorbovskoy/projects/raspisansu/build/raspisansu.build/Release-iphoneos/raspisansu.build/Objects-normal/arm64/SegmentedControl.bc",
+    "object" : "/Users/g.gorbovskoy/projects/raspisansu/build/raspisansu.build/Release-iphoneos/raspisansu.build/Objects-normal/arm64/SegmentedControl.o"
+  },
+  "/Users/g.gorbovskoy/projects/raspisansu/raspisansu/Views/ContentView.swift" : {
+    "index-unit-output-path" : "/raspisansu.build/Release-iphoneos/raspisansu.build/Objects-normal/arm64/ContentView.o",
+    "llvm-bc" : "/Users/g.gorbovskoy/projects/raspisansu/build/raspisansu.build/Release-iphoneos/raspisansu.build/Objects-normal/arm64/ContentView.bc",
+    "object" : "/Users/g.gorbovskoy/projects/raspisansu/build/raspisansu.build/Release-iphoneos/raspisansu.build/Objects-normal/arm64/ContentView.o"
+  },
+  "/Users/g.gorbovskoy/projects/raspisansu/raspisansu/Views/RaspisanView.swift" : {
+    "index-unit-output-path" : "/raspisansu.build/Release-iphoneos/raspisansu.build/Objects-normal/arm64/RaspisanView.o",
+    "llvm-bc" : "/Users/g.gorbovskoy/projects/raspisansu/build/raspisansu.build/Release-iphoneos/raspisansu.build/Objects-normal/arm64/RaspisanView.bc",
+    "object" : "/Users/g.gorbovskoy/projects/raspisansu/build/raspisansu.build/Release-iphoneos/raspisansu.build/Objects-normal/arm64/RaspisanView.o"
+  },
+  "/Users/g.gorbovskoy/projects/raspisansu/raspisansu/Views/SettingsView.swift" : {
+    "index-unit-output-path" : "/raspisansu.build/Release-iphoneos/raspisansu.build/Objects-normal/arm64/SettingsView.o",
+    "llvm-bc" : "/Users/g.gorbovskoy/projects/raspisansu/build/raspisansu.build/Release-iphoneos/raspisansu.build/Objects-normal/arm64/SettingsView.bc",
+    "object" : "/Users/g.gorbovskoy/projects/raspisansu/build/raspisansu.build/Release-iphoneos/raspisansu.build/Objects-normal/arm64/SettingsView.o"
+  }
+}

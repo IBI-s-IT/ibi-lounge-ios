@@ -1,0 +1,76 @@
+"main.title" = "Sched";
+"main.this_week" = "This week";
+"main.next_week" = "Next week";
+"main.this_month" = "This month";
+"main.custom_range" = "Select range";
+"main.from" = "From";
+"main.to" = "To";
+
+"schedules.is_online" = "🌎 Online";
+
+"schedules.place %@" = "🗺️ %@";
+"schedules.consultation" = "ℹ️ Consultation";
+"schedules.exam" = "🚨 Exam";
+"schedules.lecture" = "📖 Lecture";
+"schedules.practice" = "⛏️ Practice";
+"schedules.library_day" = "📚 Library day";
+"schedules.subject_report" = "⚠️ Test";
+"schedules.subject_report_with_grade" = "⚠️ Graded test";
+"schedules.project_work" = "👥 Project work";
+"schedules.unknown" = "‼️ Unknown";
+
+"settings.title" = "Preferences";
+"settings.section.schedule" = "Schedules";
+"settings.education_level" = "Education level";
+"settings.group_selection" = "Group";
+
+"undergraduate" = "Undegraduate";
+"specialty" = "Specialty";
+"magistracy" = "Magistracy";
+"postgraduate" = "Postgraduate";
+"additionals" = "Additional";
+
+"lms.title" = "Materials";
+
+"grades.title" = "Grades";
+"grades.data" = "Student's data";
+"grades.pin" = "Student's PIN";
+"grades.lastName" = "Last name";
+"grades.submit" = "Submit";
+"grades.grades" = "Student's grades";
+
+"subject_report_with_grade" = "Subject report with grade";
+"subject_report" = "Subject report";
+"online_course_work" = "Online course work";
+"offline_course_work" = "Offline course work";
+"exam" = "Exam";
+"passed" = "Passed";
+"absence" = "Absence";
+"failed" = "Failed";
+"not_admitted" = "Not admitted";
+
+"error.no_network" = "No network";
+"error.no_network.desc" = "Connect to the internet";
+"error.unknown_error" = "Something bad happened";
+"error.unknown_error.desc" = "Try again later";
+"error.no_schedule" = "No courses for selected period";
+"error.no_schedule.desc" = "Try to change period";
+"error.no_edu_level" = "Specify your education level";
+"error.no_edu_level.desc" = "And then try again...";
+"error.enter_data" = "Enter data";
+"error.enter_data.desc" = "And then try again...";
+"error.code %@" = "Error code: %@";
+"error.no_grades" = "Grades not found";
+"error.no_grades.desc" = "Check your «PIN» and «Last name» in settings";
+"error.no_groups" = "Groups not found";
+"error.no_groups.desc" = "Select your education level in settings and then select your group";
+"error.no_edu_level" = "No education level provided";
+"error.no_edu_level.desc" = "Select your education level in settings ";
+"error.try_again" = "Try again";
+"error.timed_out" = "Request timed out";
+"error.timed_out.desc" = "Check your network connection and try again";
+
+"valid.pin_length" = "PIN must be 5 characters long";
+"valid.pin_empty" = "Enter PIN";
+"valid.last_name_length" = "Last name must be atleast 3 characters long";
+"valid.last_name_empty" = "Enter last name";

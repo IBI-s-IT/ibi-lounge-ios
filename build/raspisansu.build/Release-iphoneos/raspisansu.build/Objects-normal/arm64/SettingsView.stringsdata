@@ -1,0 +1,24 @@
+{
+  "source": "/Users/g.gorbovskoy/projects/raspisansu/raspisansu/Views/SettingsView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "settings.title"
+      },
+      {
+        "comment": "",
+        "key": "settings.section.schedule"
+      },
+      {
+        "comment": "",
+        "key": "settings.education_level"
+      },
+      {
+        "comment": "",
+        "key": "settings.group_selection"
+      }
+    ]
+  },
+  "version": 1
+}

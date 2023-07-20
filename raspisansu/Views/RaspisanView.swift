@@ -1,0 +1,57 @@
+//
+//  RaspisanView.swift
+//  raspisansu
+//
+//  Created by g.gorbovskoy on 21.06.2023.
+//
+
+import SwiftUI
+
+struct RaspisanView: View {
+  var rangeMode: Int;
+  @EnvironmentObject var schedules: SchedulesModel;
+  
+  var body: some View {
+    List {
+      if schedules.daysError != nil || schedules.raspState != .ready {
+        TransientStatus(action: {
+          Task.init {
+            await schedules.fetchDays()
+          }
+        }, error: schedules.daysError, viewState: schedules.raspState);
+      } else if schedules.days?.response == nil {
+        TransientStatusNew(error: .schedulesEmpty, action: {
+          Task.init {
+            await schedules.fetchDays()
+          }
+        })
+      } else {
+        if let results = schedules.days {
+          if results.response != nil {
+            ForEach(results.response!, id: \.self.date) { day in
+              DayView(
+                day: day
+              )
+            }
+          }
+        }
+      }
+    }
+    .refreshable {
+      Task.init {
+        await schedules.fetchDays()
+      }
+    }
+    .onAppear(perform: {
+      schedules.rangeMode = rangeMode;
+    })
+    .navigationTitle(rangeMode == 0 ? "main.this_week" : rangeMode == 1 ? "main.next_week" : rangeMode == 2 ? "main.this_month" : "main.custom_range")
+  }
+}
+
+#Preview {
+  RaspisanView(rangeMode: 1)
+    .environment(\.locale, .init(identifier: "en"))
+    .environmentObject(SchedulesModel())
+    .frame(minWidth: 400, minHeight: 300)
+}
