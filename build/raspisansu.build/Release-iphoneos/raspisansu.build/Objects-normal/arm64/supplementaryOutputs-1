@@ -1,9 +1,0 @@
-"/Users/g.gorbovskoy/projects/raspisansu/raspisansu/Model/GroupModel.swift":
-  objc-header: "/Users/g.gorbovskoy/projects/raspisansu/build/raspisansu.build/Release-iphoneos/raspisansu.build/Objects-normal/arm64/raspisansu-Swift.h"
-  dependencies: "/Users/g.gorbovskoy/projects/raspisansu/build/raspisansu.build/Release-iphoneos/raspisansu.build/Objects-normal/arm64/raspisansu-master.d"
-  swiftdoc: "/Users/g.gorbovskoy/projects/raspisansu/build/raspisansu.build/Release-iphoneos/raspisansu.build/Objects-normal/arm64/raspisansu.swiftdoc"
-  swiftmodule: "/Users/g.gorbovskoy/projects/raspisansu/build/raspisansu.build/Release-iphoneos/raspisansu.build/Objects-normal/arm64/raspisansu.swiftmodule"
-  diagnostics: "/Users/g.gorbovskoy/projects/raspisansu/build/raspisansu.build/Release-iphoneos/raspisansu.build/Objects-normal/arm64/raspisansu-master.dia"
-  const-values: "/Users/g.gorbovskoy/projects/raspisansu/build/raspisansu.build/Release-iphoneos/raspisansu.build/Objects-normal/arm64/raspisansu-master.swiftconstvalues"
-  abi-baseline-json: "/Users/g.gorbovskoy/projects/raspisansu/build/raspisansu.build/Release-iphoneos/raspisansu.build/Objects-normal/arm64/raspisansu.abi.json"
-  swiftsourceinfo: "/Users/g.gorbovskoy/projects/raspisansu/build/raspisansu.build/Release-iphoneos/raspisansu.build/Objects-normal/arm64/raspisansu.swiftsourceinfo"
