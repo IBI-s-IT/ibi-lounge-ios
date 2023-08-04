@@ -1,18 +1,18 @@
 //
-//  RaspisanView.swift
+//  SchedulesView.swift
 //  raspisansu
 //
-//  Created by g.gorbovskoy on 21.06.2023.
+//  Created by g.gorbovskoy on 29.07.2023.
 //
 
 import SwiftUI
 
-struct RaspisanView: View {
+struct SchedulesView: View {
   var rangeMode: Int;
   @EnvironmentObject var schedules: SchedulesModel;
   
   var body: some View {
-    List {
+    VStack {
       if (rangeMode == 3) {
         Section {
           DatePicker("main.from", selection: $schedules.dateFrom, in: ...schedules.dateTo, displayedComponents: .date)
@@ -20,7 +20,7 @@ struct RaspisanView: View {
         }
         .datePickerStyle(.compact)
       }
-
+      
       if schedules.raspState == .loading {
         ProgressView()
       } else if schedules.daysError != nil {
@@ -45,18 +45,14 @@ struct RaspisanView: View {
       await schedules.fetchDays()
     }
     .onAppear(perform: {
-      schedules.rangeMode = rangeMode;
       Task.init {
-        await schedules.fetchDays();
+        await schedules.fetchDays()
       }
+      schedules.rangeMode = rangeMode;
     })
-    .navigationTitle(rangeMode == 0 ? "main.this_week" : rangeMode == 1 ? "main.next_week" : rangeMode == 2 ? "main.this_month" : "main.custom_range")
   }
 }
 
 #Preview {
-  RaspisanView(rangeMode: 1)
-    .environment(\.locale, .init(identifier: "en"))
-    .environmentObject(SchedulesModel())
-    .frame(minWidth: 400, minHeight: 300)
+  SchedulesView(rangeMode: 3)
 }

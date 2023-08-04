@@ -1,10 +1,11 @@
-"main.title" = "Sched";
+"main.title" = "Schedules";
 "main.this_week" = "This week";
 "main.next_week" = "Next week";
 "main.this_month" = "This month";
-"main.custom_range" = "Select range";
+"main.custom_range" = "Custom range";
 "main.from" = "From";
 "main.to" = "To";
+"main.done" = "Done";
 
 "schedules.is_online" = "🌎 Online";
 
@@ -49,14 +50,14 @@
 "failed" = "Failed";
 "not_admitted" = "Not admitted";
 
-"error.no_network" = "No network";
-"error.no_network.desc" = "Connect to the internet";
+"error.network_error" = "No network";
+"error.network_error.desc" = "Connect to the internet";
 "error.unknown_error" = "Something bad happened";
 "error.unknown_error.desc" = "Try again later";
-"error.no_schedule" = "No courses for selected period";
-"error.no_schedule.desc" = "Try to change period";
-"error.no_edu_level" = "Specify your education level";
-"error.no_edu_level.desc" = "And then try again...";
+"error.no_schedules" = "No courses for selected period";
+"error.no_schedules.desc" = "Try to change period";
+"error.no_education_level_specified" = "Specify your education level";
+"error.no_education_level_specified.desc" = "And then try again...";
 "error.enter_data" = "Enter data";
 "error.enter_data.desc" = "And then try again...";
 "error.code %@" = "Error code: %@";

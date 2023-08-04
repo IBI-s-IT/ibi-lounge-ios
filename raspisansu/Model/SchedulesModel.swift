@@ -36,8 +36,48 @@ enum Errors: String, Codable {
   case bad_error_184
   case bad_error_185
   case no_education_level_specified
-  case no_data
+  case no_schedules
+  case no_groups
+  case no_grades
   case unknown_error
+  case network_error
+  case timed_out
+  
+  var title: String {
+    switch self {
+    case .bad_error, .bad_error_159, .bad_error_169, .bad_error_184, .bad_error_185:
+      return "error.unknown_error"
+    default:
+      return "error.\(self.rawValue)";
+    }
+  }
+  
+  var description: String {
+    switch self {
+    case .bad_error, .bad_error_159, .bad_error_169, .bad_error_184, .bad_error_185:
+      return "error.unknown_error.desc"
+    default:
+      return "error.\(self.rawValue).desc";
+    }
+  }
+  
+  var icon: String {
+    switch self {
+    case .no_grades, .no_groups, .no_schedules:
+      return "exclamationmark.bubble"
+    case .network_error:
+      return "wifi.slash"
+    case .timed_out:
+      return "exclamationmark.arrow.circlepath"
+    default:
+      return "questionmark.app.dashed"
+    }
+  }
+}
+
+enum ViewState {
+  case loading
+  case ready
 }
 
 extension Errors: Error {}
@@ -51,8 +91,8 @@ struct Day: Codable {
   var lessons: Array<Lesson>;
   
   enum CodingKeys: CodingKey {
-      case date
-      case lessons
+    case date
+    case lessons
   }
 }
 
@@ -68,10 +108,10 @@ struct Lesson: Codable, Identifiable {
   }
   
   enum CodingKeys: CodingKey {
-      case text
-      case time_start
-      case time_end
-      case additional
+    case text
+    case time_start
+    case time_end
+    case additional
   }
 }
 
@@ -86,13 +126,13 @@ struct AdditionalLesson: Codable, Identifiable {
   var custom_time: CustomTime?;
   
   enum CodingKeys: CodingKey {
-      case is_online
-      case url
-      case type
-      case subgroup
-      case location
-      case teacher_name
-      case custom_time
+    case is_online
+    case url
+    case type
+    case subgroup
+    case location
+    case teacher_name
+    case custom_time
   }
 }
 
@@ -114,19 +154,7 @@ enum LessonType: String, Codable {
 
 
 enum someErrors: Error {
-  case req_noresponse
-  case req_timeout
-  case req_no_data
   case req_bad_code
-  case req_missing_data
-}
-
-enum ViewState {
-  case enterData
-  case loading
-  case ready
-  case networkError
-  case timedOut
 }
 
 class SchedulesModel: ObservableObject {
@@ -153,6 +181,11 @@ class SchedulesModel: ObservableObject {
   }
   
   func fetchDays() async {
+    DispatchQueue.main.sync {
+      self.daysError = nil;
+      self.raspState = .loading;
+    }
+    
     var startDate = Date().startOfWeek;
     var endDate = Date().endOfWeek;
     let dateFormatter = DateFormatter()
@@ -180,42 +213,50 @@ class SchedulesModel: ObservableObject {
       let urlRequest = URLRequest(url: url)
       
       let (data, response) = try await URLSession.shared.data(for: urlRequest)
-      guard (response as? HTTPURLResponse)?.statusCode == 200 else { throw someErrors.req_bad_code }
+      guard (response as? HTTPURLResponse)?.statusCode == 200 else {
+        self.daysError = .bad_error;
+        self.raspState = .ready;
+        return;
+      }
       
       let decoder = JSONDecoder()
       decoder.dateDecodingStrategy = .formatted(DateFormatter.iso8601Full)
       let decodedData = try decoder.decode(DaysRequestResult.self, from: data)
       
       DispatchQueue.main.async {
-        switch decodedData {
-          case .response(let days):
-            self.days = days
-            self.raspState = .ready;
-          case .error(let error):
-            self.daysError = error
-        }
-      }
-      
-    } catch someErrors.req_bad_code {
-      DispatchQueue.main.sync {
         self.raspState = .ready
-        self.daysError = .bad_error
+        
+        switch decodedData {
+        case .response(let days):
+          if days.response == nil {
+            self.daysError = .bad_error;
+            return;
+          } else if days.response!.isEmpty {
+            self.daysError = .no_schedules;
+            return;
+          }
+          
+          self.days = days
+        case .error(let error):
+          self.daysError = error
+        }
       }
     } catch {
       DispatchQueue.main.sync {
+        self.raspState = .ready;
         if let _err = error as? URLError {
-          self.raspState = .networkError;
+          self.daysError = .network_error
         } else if let err = error as? URLError, err.code  == URLError.Code.timedOut {
-          self.raspState = .timedOut
+          self.daysError = .timed_out
         } else {
-          print("Error fetching data from rasp-back: \(error)")
+          self.daysError = .unknown_error
+          print("[SchedulesModel] Error fetching data from rasp-back: \(error)")
         }
       }
     }
   }
-
+  
   init() {
-    self.raspState = .loading;
     Task.init {
       await self.fetchDays()
     }

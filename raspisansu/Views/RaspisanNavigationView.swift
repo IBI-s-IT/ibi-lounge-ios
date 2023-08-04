@@ -8,11 +8,13 @@
 import SwiftUI
 
 struct RaspisanNavigationView: View {
+  @EnvironmentObject var schedules: SchedulesModel;
+  
   var body: some View {
     NavigationView {
       List {
         Section {
-          ForEach(0..<3) { rangeMode in
+          ForEach(1..<4) { rangeMode in
             NavigationLink {
               RaspisanView(rangeMode: rangeMode)
             } label: {
@@ -20,11 +22,18 @@ struct RaspisanNavigationView: View {
             }
           }
         }
+        Section("main.this_week") {
+          SchedulesView(rangeMode: 0)
+        }
       }
+      .refreshable {
+        Task.init {
+          await schedules.fetchDays()
+        }
+      }
+      
       .navigationTitle("main.title")
       #if os(macOS)
-      .listStyle(.sidebar)
-      #else
       .listStyle(.sidebar)
       #endif
     }

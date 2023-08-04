@@ -19,28 +19,19 @@ struct SettingsView: View {
             Text(LocalizedStringKey(String(eduLevel.rawValue))).tag(eduLevel)
           }
         }
-        if groups.isLoading {
-          TransientStatusNew(error: .none);
+        if groups.error != nil {
+          TransientStatusNew(error: groups.error!) {
+            Task.init {
+              await groups.update()
+            }
+          }
         } else {
-          switch groups.error {
-          case .networkError:
-            TransientStatusNew(error: .networkError) {
-              Task.init {
-                await groups.update()
-              }
-            }
-          case .serverError:
-            TransientStatusNew(error: .serverError) {
-              Task.init {
-                await groups.update()
-              }
-            }
-          case .none:
-            if groups.data?.response != nil {
-              Picker("settings.group_selection", selection: $groups.group) {
-                ForEach(groups.data!.response, id: \.id) { grp in
-                  Text(grp.name).tag(grp.id)
-                }
+          if groups.isLoading {
+            ProgressView()
+          } else {
+            Picker("settings.group_selection", selection: $groups.group) {
+              ForEach(groups.data!.response, id: \.id) { grp in
+                Text(grp.name).tag(grp.id)
               }
             }
           }
@@ -75,6 +66,9 @@ struct SettingsView: View {
           }
         }
       }
+    }
+    .refreshable {
+      await groups.update()
     }
 #if os(iOS)
     .listStyle(.insetGrouped)

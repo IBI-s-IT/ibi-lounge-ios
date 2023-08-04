@@ -112,11 +112,10 @@ struct LMSView: View {
               Image(systemName: "arrow.clockwise")
             })
           }
-          ToolbarItem(placement: .primaryAction) {
-            ShareLink(item: model.url)
-          }
         })
+        .navigationDocument(model.url)
         .navigationTitle(model.title ?? "lms.title")
+        .navigationBarTitleDisplayMode(.inline)
     }
   }
 }

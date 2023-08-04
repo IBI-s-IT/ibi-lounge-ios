@@ -31,9 +31,6 @@ struct ContentView: View {
         }
       }
       .listStyle(.sidebar)
-      .toolbar {
-        SettingsLink()
-      }
     }
 #else
     TabView {

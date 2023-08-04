@@ -33,7 +33,7 @@ enum GroupsModelErrors: Error {
 
 class GroupsModel: ObservableObject {
   @Published private(set) var data: Groups?
-  @Published private(set) var error: GroupsModelErrors?
+  @Published private(set) var error: Errors?
   @Published private(set) var isLoading: Bool = false
   @AppStorage("lastEduLevel") var educationLevel: EducationLevel = .undergraduate {
     willSet {
@@ -45,9 +45,11 @@ class GroupsModel: ObservableObject {
   @AppStorage("lastGroup") var group: String = "2352"
   
   func update() async {
-    DispatchQueue.main.async {
+    DispatchQueue.main.sync {
       self.isLoading = true;
+      self.error = nil;
     }
+
     do {
       guard let url = URL(string: "https://rasp-back.utme.space/groups?education_level=\(educationLevel.rawValue)") else {
         fatalError("Missing URL")
@@ -57,7 +59,9 @@ class GroupsModel: ObservableObject {
       
       let (data, response) = try await URLSession.shared.data(for: urlRequest)
       guard (response as? HTTPURLResponse)?.statusCode == 200 else {
-        throw GroupsModelErrors.serverError
+        self.isLoading = false;
+        self.error = .bad_error
+        return;
       }
       
       let decoder = JSONDecoder()
@@ -68,15 +72,16 @@ class GroupsModel: ObservableObject {
         self.data = decodedData
       }
       
-    } catch GroupsModelErrors.serverError {
-      self.error = .serverError
     } catch {
-      if let err = error as? URLError, err.code  == URLError.Code.notConnectedToInternet {
-        self.error = .networkError
-      } else {
-        print("Error fetching data from rasp-back: \(error)")
+      DispatchQueue.main.sync {
+        self.isLoading = false;
+        if let err = error as? URLError, err.code  == URLError.Code.notConnectedToInternet {
+          self.error = .network_error
+        } else {
+          self.error = .bad_error;
+          print("[GroupsModel] Error fetching data from rasp-back: \(error)")
+        }
       }
-      print("Error fetching data from rasp-back: \(error)")
     }
   }
   

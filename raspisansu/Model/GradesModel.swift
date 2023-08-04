@@ -56,7 +56,6 @@ enum GradeValidationStatus {
 }
 
 enum GradeErrors: Error {
-  case networkError
   case serverError
 }
 
@@ -75,10 +74,11 @@ class GradesModel: ObservableObject {
   @Published private(set) var data: Grades?
   @Published private(set) var validationStatus: GradeValidationStatus = .okay
   @Published private(set) var isLoading: Bool = false
-  @Published private(set) var error: GradeErrors?;
+  @Published private(set) var error: Errors?;
   @Published private(set) var isEmpty: Bool = false
   
   init() {
+    self.error = nil;
     self.validationStatus = self.validate()
     if self.validationStatus == .okay {
       Task.init {
@@ -88,20 +88,25 @@ class GradesModel: ObservableObject {
   }
   
   func update() async {
-    DispatchQueue.main.async {
-      self.isLoading = true
-      self.isEmpty = false
+    DispatchQueue.main.sync {
+      self.isLoading = true;
+      self.isEmpty = false;
+      self.error = nil;
     }
     
     do {
-      guard let url = URL(string: "https://rasp-back.utme.space/grades?pin=\(pin)&last_name=\(lastName)") else {
+      let pinEnc = pin.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed);
+      let lnEnc = lastName.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed);
+      guard let url = URL(string: "https://rasp-back.utme.space/grades?pin=\(pinEnc!)&last_name=\(lnEnc!)") else {
         fatalError("Missing URL")
       }
       let urlRequest = URLRequest(url: url)
       
       let (data, response) = try await URLSession.shared.data(for: urlRequest)
       guard (response as? HTTPURLResponse)?.statusCode == 200 else {
-        throw GradeErrors.serverError
+        self.isLoading = false;
+        self.error = .bad_error;
+        return;
       }
       
       let decoder = JSONDecoder()
@@ -109,7 +114,6 @@ class GradesModel: ObservableObject {
 
       DispatchQueue.main.async {
         self.isLoading = false
-        self.error = nil
         
         if decodedData.response.isEmpty {
           self.isEmpty = true
@@ -118,12 +122,16 @@ class GradesModel: ObservableObject {
         self.data = decodedData
       }
     } catch GradeErrors.serverError {
-      self.error = .serverError;
+      self.error = .bad_error;
     } catch {
-      if let err = error as? URLError, err.code  == URLError.Code.notConnectedToInternet {
-        self.error = .networkError;
-      } else {
-        print("Error fetching data from rasp-back: \(error)")
+      DispatchQueue.main.sync {
+        self.isLoading = false;
+        if let err = error as? URLError, err.code  == URLError.Code.notConnectedToInternet {
+          self.error = .network_error;
+        } else {
+          self.error = .bad_error;
+          print("[GradesModel] Error fetching data from rasp-back: \(error)")
+        }
       }
     }
   }
