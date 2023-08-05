@@ -35,6 +35,26 @@ extension Date {
   func endOfMonth() -> Date {
     return Calendar.current.date(byAdding: DateComponents(month: 1, day: -1), to: self.startOfMonth())!
   }
+  
+  func getNext15Minutes() -> Date {
+    let calendar = Calendar.current
+    let nextHour = calendar.date(byAdding: .minute, value: 15, to: Date()) ?? Date()
+    return nextHour
+  }
+  
+  func getJune7Date() -> Date {
+    let calendar = Calendar.current
+    var dateComponents = DateComponents()
+    dateComponents.year = calendar.component(.year, from: Date())
+    dateComponents.month = 6
+    dateComponents.day = 7
+    
+    guard let june7Date = calendar.date(from: dateComponents) else {
+      return Date()
+    }
+    
+    return june7Date
+  }
 }
 
 extension DateFormatter {

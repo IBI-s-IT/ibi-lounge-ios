@@ -16,11 +16,10 @@ enum DaysRequestResult {
 extension DaysRequestResult: Decodable {
   init(from decoder: Decoder) throws {
     let container = try decoder.singleValueContainer()
-    if let response = try?
-        container.decode(Days.self) {
-      self = .response(response)
+    if let error = try? container.decode(RequestError.self) {
+      self = .error(error.error)
     } else {
-      self = .error(try container.decode(RequestError.self).error)
+      self = .response(try container.decode(Days.self))
     }
   }
 }
@@ -161,11 +160,22 @@ class SchedulesModel: ObservableObject {
   @Published private(set) var days: Days?
   @Published private(set) var daysError: Errors?
   @Published private(set) var raspState: ViewState = .loading;
-  @Published var dateFrom: Date = .now;
-  @Published var dateTo: Date = .now;
+  @Published var dateFrom: Date = .now {
+    willSet {
+      Task.init {
+        await fetchDays()
+      }
+    }
+  }
+  @Published var dateTo: Date = .now {
+    willSet {
+      Task.init {
+        await fetchDays()
+      }
+    }
+  }
   @AppStorage("lastRangeMode") var rangeMode: Int = 0 {
     willSet {
-      self.raspState = .loading;
       Task.init {
         await fetchDays()
       }
@@ -173,7 +183,6 @@ class SchedulesModel: ObservableObject {
   }
   @AppStorage("lastGroup") var group: String = "2352" {
     willSet {
-      self.raspState = .loading;
       Task.init {
         await fetchDays()
       }
@@ -228,14 +237,6 @@ class SchedulesModel: ObservableObject {
         
         switch decodedData {
         case .response(let days):
-          if days.response == nil {
-            self.daysError = .bad_error;
-            return;
-          } else if days.response!.isEmpty {
-            self.daysError = .no_schedules;
-            return;
-          }
-          
           self.days = days
         case .error(let error):
           self.daysError = error

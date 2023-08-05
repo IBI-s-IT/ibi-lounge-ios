@@ -42,16 +42,20 @@ struct LessonView: View {
         Text(lesson.text)
           .font(.title3)
           .fontWeight(.semibold)
-        Text(lesson.additional?.teacher_name ?? "Неизвестно")
-          .font(.caption)
-          .fontWeight(.semibold)
-          .textCase(/*@START_MENU_TOKEN@*/.uppercase/*@END_MENU_TOKEN@*/)
+        if lesson.additional?.teacher_name != nil {
+          Text(lesson.additional!.teacher_name!)
+            .font(.caption)
+            .fontWeight(.semibold)
+            .textCase(/*@START_MENU_TOKEN@*/.uppercase/*@END_MENU_TOKEN@*/)
+        }
       }
       Spacer()
       VStack(alignment: .trailing) {
-        Text(LocalizedStringKey(String("schedules.\(lesson.additional?.type?.rawValue ?? "unknown")")))
-          .font(.footnote)
-          .padding(.bottom, 0.5)
+        if lesson.additional?.type != nil {
+          Text(LocalizedStringKey(String("schedules.\(lesson.additional!.type!.rawValue)")))
+            .font(.footnote)
+            .padding(.bottom, 0.5)
+        }
         Text(
           lesson.additional?.is_online ?? false ? LocalizedStringKey("schedules.is_online") : LocalizedStringKey("schedules.place \(lesson.additional?.location ?? "Неизвестно")")
         )

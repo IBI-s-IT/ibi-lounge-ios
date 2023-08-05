@@ -8,7 +8,7 @@
 import SwiftUI
 
 @main
-struct raspisansuApp: App {
+struct LoungeApp: App {
   @StateObject var grades = GradesModel()
   @StateObject var groups = GroupsModel()
   @StateObject var raspisan = SchedulesModel()

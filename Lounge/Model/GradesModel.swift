@@ -75,7 +75,6 @@ class GradesModel: ObservableObject {
   @Published private(set) var validationStatus: GradeValidationStatus = .okay
   @Published private(set) var isLoading: Bool = false
   @Published private(set) var error: Errors?;
-  @Published private(set) var isEmpty: Bool = false
   
   init() {
     self.error = nil;
@@ -90,7 +89,6 @@ class GradesModel: ObservableObject {
   func update() async {
     DispatchQueue.main.sync {
       self.isLoading = true;
-      self.isEmpty = false;
       self.error = nil;
     }
     
@@ -116,7 +114,7 @@ class GradesModel: ObservableObject {
         self.isLoading = false
         
         if decodedData.response.isEmpty {
-          self.isEmpty = true
+          self.error = .no_grades
         }
         
         self.data = decodedData
