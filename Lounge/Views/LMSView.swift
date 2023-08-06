@@ -40,37 +40,34 @@ struct LMSView: View {
   @StateObject var model = WebViewModel()
   
   var body: some View {
-    NavigationStack {
-      WebView(webView: model.webView)
-        .toolbar(content: {
-          ToolbarItem(placement: .navigation) {
-            Button(action: {
-              model.goBack()
-            }, label: {
-              Image(systemName: "chevron.left")
-            })
-            .disabled(!model.canGoBack)
-          }
-          ToolbarItem(placement: .navigation) {
-            Button(action: {
-              model.goForward()
-            }, label: {
-              Image(systemName: "chevron.right")
-            })
-            .disabled(!model.canGoForward)
-          }
-          ToolbarItem(placement: .navigation) {
-            Button(action: {
-              model.reload()
-            }, label: {
-              Image(systemName: "arrow.clockwise")
-            })
-          }
-        })
-        .navigationDocument(model.url)
-        .navigationTitle(model.title ?? "lms.title")
-        .navigationBarTitleDisplayMode(.inline)
-    }
+    WebView(webView: model.webView)
+      .toolbar(content: {
+        ToolbarItem(placement: .navigation) {
+          Button(action: {
+            model.goBack()
+          }, label: {
+            Image(systemName: "chevron.left")
+          })
+          .disabled(!model.canGoBack)
+        }
+        ToolbarItem(placement: .navigation) {
+          Button(action: {
+            model.goForward()
+          }, label: {
+            Image(systemName: "chevron.right")
+          })
+          .disabled(!model.canGoForward)
+        }
+        ToolbarItem(placement: .navigation) {
+          Button(action: {
+            model.reload()
+          }, label: {
+            Image(systemName: "arrow.clockwise")
+          })
+        }
+      })
+      .navigationDocument(model.url)
+      .navigationTitle(model.title ?? "lms.title")
   }
 }
 

@@ -8,57 +8,41 @@
 import SwiftUI
 
 struct ContentView: View {
-  @State var isPresented: Bool = false;
-  
   var body: some View {
-#if os(macOS)
-    NavigationView {
-      List {
-        NavigationLink {
-          RaspisanNavigationView()
-        } label: {
-          Label("main.title", systemImage: "calendar")
-        }
-        NavigationLink {
+    if UIDevice.current.userInterfaceIdiom == .pad {
+      AppNavigator()
+    } else {
+      TabView {
+        SchedulesNavigator()
+          .tabItem {
+            Label("main.title", systemImage: "calendar")
+          }
+        NavigationStack {
           LMSView()
-        } label: {
+        }
+        .tabItem {
           Label("lms.title", systemImage: "list.bullet.below.rectangle")
         }
-        NavigationLink {
+        NavigationStack {
           GradesView()
-        } label: {
-          Label("grades.title", systemImage: "graduationcap")
         }
-      }
-      .listStyle(.sidebar)
-    }
-#else
-    TabView {
-      RaspisanNavigationView()
-        .tabItem {
-          Label("main.title", systemImage: "calendar")
-        }
-      LMSView()
-        .tabItem {
-          Label("lms.title", systemImage: "list.bullet.below.rectangle")
-        }
-      GradesView()
         .tabItem {
           Label("grades.title", systemImage: "graduationcap")
         }
-      NavigationStack { SettingsView() }
+        NavigationStack {
+          Settings()
+        }
         .tabItem {
           Label("settings.title", systemImage: "gearshape")
         }
+      }
     }
-#endif
+    
   }
 }
 
 #Preview {
   ContentView()
     .environment(\.locale, .init(identifier: "ru"))
-    .environmentObject(SchedulesModel())
-    .environmentObject(GroupsModel())
-    .environmentObject(GradesModel())
+    .environmentObject(SettingsModel())
 }

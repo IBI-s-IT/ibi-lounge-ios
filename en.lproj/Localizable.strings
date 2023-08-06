@@ -75,3 +75,9 @@
 "valid.pin_empty" = "Enter PIN";
 "valid.last_name_length" = "Last name must be atleast 3 characters long";
 "valid.last_name_empty" = "Enter last name";
+
+"widget.no_schedules" = "Well done";
+"widget.no_schedules.desc" = "Have a rest!";
+"widget.left %@" = "%@ more classes...";
+"widget.name" = "Classes today and tomorrow";
+"widget.description" = "See your current classes directly from the Home Screen";

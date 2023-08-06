@@ -74,3 +74,9 @@
 "valid.pin_empty" = "Введите ПИН";
 "valid.last_name_length" = "Фамилия должна содержать минимум 3 символа";
 "valid.last_name_empty" = "Введите фамилию";
+
+"widget.no_schedules" = "Умница";
+"widget.no_schedules.desc" = "(сущ.) ты";
+"widget.left %@" = "ещё %@...";
+"widget.name" = "Пары на сегодня и завтра";
+"widget.description" = "Смотрите свои текущие пары прямо с экрана \"Домой\"";

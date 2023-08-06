@@ -9,27 +9,15 @@ import SwiftUI
 
 @main
 struct LoungeApp: App {
-  @StateObject var grades = GradesModel()
-  @StateObject var groups = GroupsModel()
-  @StateObject var raspisan = SchedulesModel()
+  @StateObject var settings = SettingsModel()
   
   var body: some Scene {
     WindowGroup {
       ContentView()
-        .environmentObject(grades)
-        .environmentObject(groups)
-        .environmentObject(raspisan)
+        .environmentObject(settings)
     }
     .commands {
       SidebarCommands()
     }
-#if os(macOS)
-    Settings {
-      SettingsView()
-        .environmentObject(grades)
-        .environmentObject(groups)
-        .environmentObject(raspisan)
-    }
-#endif
   }
 }

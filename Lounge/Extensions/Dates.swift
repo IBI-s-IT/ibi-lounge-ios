@@ -46,8 +46,8 @@ extension Date {
     let calendar = Calendar.current
     var dateComponents = DateComponents()
     dateComponents.year = calendar.component(.year, from: Date())
-    dateComponents.month = 6
-    dateComponents.day = 7
+    dateComponents.month = 5
+    dateComponents.day = 14
     
     guard let june7Date = calendar.date(from: dateComponents) else {
       return Date()

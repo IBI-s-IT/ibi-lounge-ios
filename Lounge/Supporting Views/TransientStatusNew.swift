@@ -12,7 +12,12 @@ struct TransientStatusNew: View {
   var action: (() -> Void)?
   
   var body: some View {
-    ErrorScreen(icon: error.icon, title: error.title, description: error.description, code: error.rawValue, action: action)
+    switch error {
+    case .loading:
+      ProgressView()
+    default:
+      ErrorScreen(icon: error.icon, title: error.title, description: error.description, code: error.rawValue, action: action)
+    }
   }
 }
 
