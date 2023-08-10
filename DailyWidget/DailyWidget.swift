@@ -11,7 +11,7 @@ import SwiftUI
 extension View {
   func widgetBackground(_ color: Color) -> some View {
     if #available(iOSApplicationExtension 17.0, macOSApplicationExtension 14.0, *) {
-      return  containerBackground(color, for: .widget)
+      return containerBackground(color, for: .widget)
     } else {
       return background(color)
     }
@@ -152,9 +152,10 @@ struct DailyWidgetEntryView: View {
         maxHeight: 148,
         alignment: .topLeading
       )
-      .widgetBackground(.secondary)
+      .background(Color("BackgroundPrimary"))
       .cornerRadius(20)
     }
+    .widgetBackground(Color("BackgroundSecondary"))
   }
 }
 
