@@ -48,7 +48,17 @@ struct Schedules: View {
         if isCustomPeriod {
           Section {
             DatePicker("main.from", selection: $from, in: ...to, displayedComponents: .date)
+              .onChange(of: from, perform: { _ in
+                Task.init {
+                  await self.fetch()
+                }
+              })
             DatePicker("main.to", selection: $to, in: from..., displayedComponents: .date)
+              .onChange(of: from, perform: { _ in
+                Task.init {
+                  await self.fetch()
+                }
+              })
           }
           .datePickerStyle(.compact)
         }
