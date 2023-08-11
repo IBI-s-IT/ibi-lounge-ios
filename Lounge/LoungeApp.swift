@@ -19,5 +19,11 @@ struct LoungeApp: App {
     .commands {
       SidebarCommands()
     }
+#if os(macOS)
+    Settings {
+      SettingsView()
+        .environmentObject(settings)
+    }
+#endif
   }
 }

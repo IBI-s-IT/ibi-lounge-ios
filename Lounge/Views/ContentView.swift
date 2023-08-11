@@ -9,6 +9,9 @@ import SwiftUI
 
 struct ContentView: View {
   var body: some View {
+    #if os(macOS)
+      AppNavigator()
+    #else
     if UIDevice.current.userInterfaceIdiom == .pad {
       AppNavigator()
     } else {
@@ -30,14 +33,14 @@ struct ContentView: View {
           Label("grades.title", systemImage: "graduationcap")
         }
         NavigationStack {
-          Settings()
+          SettingsView()
         }
         .tabItem {
           Label("settings.title", systemImage: "gearshape")
         }
       }
     }
-    
+    #endif
   }
 }
 

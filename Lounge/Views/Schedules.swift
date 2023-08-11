@@ -15,6 +15,8 @@ struct Schedules: View {
   var isCustomPeriod: Bool = false;
   @EnvironmentObject var settings: SettingsModel;
   @State var days: DaysRequestResult = .error(.loading);
+  @State var range: ClosedRange<Date>? = Date()...Date();
+  @State private var isShowingCalendar = false
   
   var content: some View {
     switch days {
@@ -47,20 +49,22 @@ struct Schedules: View {
       List {
         if isCustomPeriod {
           Section {
-            DatePicker("main.from", selection: $from, in: ...to, displayedComponents: .date)
-              .onChange(of: from, perform: { _ in
-                Task.init {
-                  await self.fetch()
-                }
-              })
-            DatePicker("main.to", selection: $to, in: from..., displayedComponents: .date)
-              .onChange(of: from, perform: { _ in
-                Task.init {
-                  await self.fetch()
-                }
-              })
+            HStack {
+              Text("main.custom_range")
+              Spacer()
+              Button("\((range?.lowerBound.formatted(date: .numeric, time: .omitted)) ?? "???") - \((range?.upperBound.formatted(date: .numeric, time: .omitted)) ?? "???")") {
+                self.isShowingCalendar = true
+              }
+              .sheet(isPresented: $isShowingCalendar) {
+                CalendarSheet(range: $range)
+                  .onChange(of: range) { newValue in
+                    Task.init {
+                      await fetch();
+                    }
+                  }
+              }
+            }
           }
-          .datePickerStyle(.compact)
         }
         content
       }
@@ -75,6 +79,17 @@ struct Schedules: View {
   }
   
   func fetch() async {
+    if isCustomPeriod {
+      if range != nil {
+        days = await Requests().fetchSchedules(
+          from: range!.lowerBound,
+          to: range!.upperBound,
+          group: settings.group
+        )
+      }
+      return;
+    }
+    
     days = await Requests().fetchSchedules(
       from: from,
       to: to,

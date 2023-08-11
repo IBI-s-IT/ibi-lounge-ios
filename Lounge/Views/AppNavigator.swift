@@ -33,23 +33,47 @@ struct AppNavigator: View {
             Text("main.custom_range")
           }
         }
-        NavigationLink {
-          GradesView()
-        } label: {
-          Label("grades.title", systemImage: "list.number")
-        }
-        NavigationLink {
-          LMSView()
-        } label: {
-          Label("lms.title", systemImage: "doc")
-        }
-        NavigationLink {
-          Settings()
-        } label: {
-          Label("settings.title", systemImage: "gearshape")
+        Section {
+          NavigationLink {
+            GradesView()
+          } label: {
+            Label("grades.title", systemImage: "list.number")
+          }
+          NavigationLink {
+            LMSView()
+          } label: {
+            Label("lms.title", systemImage: "doc")
+          }
+#if os(iOS)
+          NavigationLink {
+            SettingsView()
+          } label: {
+            Label("settings.title", systemImage: "gearshape")
+          }
+#endif
         }
       }
       .listStyle(.sidebar)
+#if os(macOS)
+      .toolbar {
+        ToolbarItem {
+          if #available(macOS 14, *) {
+            SettingsLink(label: {
+              Label("settings.title", systemImage: "gearshape")
+            })
+          } else {
+            Button("settings.title", systemImage: "gearshape") {
+              if #available(macOS 13, *) {
+                NSApp.sendAction(Selector(("showSettingsWindow:")), to: nil, from: nil)
+              } else {
+                NSApp.sendAction(Selector(("showPreferencesWindow:")), to: nil, from: nil)
+              }
+            }
+          }
+          
+        }
+      }
+#endif
       .navigationTitle("Lounge")
     }
   }

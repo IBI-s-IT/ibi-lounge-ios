@@ -3,11 +3,13 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 60;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		A504A2FE2A4857FA002197BD /* TransientStatusNew.swift in Sources */ = {isa = PBXBuildFile; fileRef = A504A2FD2A4857FA002197BD /* TransientStatusNew.swift */; };
+		A50781832A85480D0006225F /* SchedulesSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50781822A85480D0006225F /* SchedulesSettings.swift */; };
+		A50781852A85486C0006225F /* GradesSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50781842A85486C0006225F /* GradesSettings.swift */; };
 		A5083B902A45C04600B3093E /* SchedulesNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5083B8F2A45C04600B3093E /* SchedulesNavigator.swift */; };
 		A5083B922A45C14600B3093E /* LMSView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5083B912A45C14600B3093E /* LMSView.swift */; };
 		A50C78E32A8005AF008A22E1 /* AppNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50C78E22A8005AF008A22E1 /* AppNavigator.swift */; };
@@ -34,7 +36,16 @@
 		A59ECEF22A7FCF6100FB45B3 /* Schedules.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59ECEF12A7FCF6100FB45B3 /* Schedules.swift */; };
 		A59ECEF42A7FCFA100FB45B3 /* SettingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59ECEF32A7FCFA100FB45B3 /* SettingsModel.swift */; };
 		A59ECEF52A7FCFA100FB45B3 /* SettingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59ECEF32A7FCFA100FB45B3 /* SettingsModel.swift */; };
-		A59ECEF72A7FD2CD00FB45B3 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59ECEF62A7FD2CD00FB45B3 /* Settings.swift */; };
+		A59ECEF72A7FD2CD00FB45B3 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59ECEF62A7FD2CD00FB45B3 /* SettingsView.swift */; };
+		A5D16F8E2A85262C009BE16E /* MultiDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D16F852A85262B009BE16E /* MultiDatePicker.swift */; };
+		A5D16F8F2A85262C009BE16E /* MDPMonthYearPickerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D16F872A85262C009BE16E /* MDPMonthYearPickerButton.swift */; };
+		A5D16F902A85262C009BE16E /* MDPDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D16F882A85262C009BE16E /* MDPDayView.swift */; };
+		A5D16F912A85262C009BE16E /* MDPMonthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D16F892A85262C009BE16E /* MDPMonthView.swift */; };
+		A5D16F922A85262C009BE16E /* MDPContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D16F8A2A85262C009BE16E /* MDPContentView.swift */; };
+		A5D16F932A85262C009BE16E /* MDPMonthYearPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D16F8B2A85262C009BE16E /* MDPMonthYearPicker.swift */; };
+		A5D16F942A85262C009BE16E /* MDPModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D16F8C2A85262C009BE16E /* MDPModel.swift */; };
+		A5D16F952A85262C009BE16E /* MDPDayOfMonth.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D16F8D2A85262C009BE16E /* MDPDayOfMonth.swift */; };
+		A5D16F972A853CE2009BE16E /* CalendarSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D16F962A853CE2009BE16E /* CalendarSheet.swift */; };
 		A5DD13F32A46491100B15C2E /* Grades.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DD13F22A46491100B15C2E /* Grades.swift */; };
 		A5E3BDE22A403FE900755867 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A5E3BDE42A403FE900755867 /* Localizable.strings */; };
 /* End PBXBuildFile section */
@@ -65,6 +76,8 @@
 
 /* Begin PBXFileReference section */
 		A504A2FD2A4857FA002197BD /* TransientStatusNew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransientStatusNew.swift; sourceTree = "<group>"; };
+		A50781822A85480D0006225F /* SchedulesSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulesSettings.swift; sourceTree = "<group>"; };
+		A50781842A85486C0006225F /* GradesSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradesSettings.swift; sourceTree = "<group>"; };
 		A5083B8F2A45C04600B3093E /* SchedulesNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulesNavigator.swift; sourceTree = "<group>"; };
 		A5083B912A45C14600B3093E /* LMSView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMSView.swift; sourceTree = "<group>"; };
 		A50C78E22A8005AF008A22E1 /* AppNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppNavigator.swift; sourceTree = "<group>"; };
@@ -92,7 +105,16 @@
 		A58D080F2A40E6E600AD7A26 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		A59ECEF12A7FCF6100FB45B3 /* Schedules.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Schedules.swift; sourceTree = "<group>"; };
 		A59ECEF32A7FCFA100FB45B3 /* SettingsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsModel.swift; sourceTree = "<group>"; };
-		A59ECEF62A7FD2CD00FB45B3 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		A59ECEF62A7FD2CD00FB45B3 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		A5D16F852A85262B009BE16E /* MultiDatePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MultiDatePicker.swift; path = "../../../../MultiDatePicker/MultiDatePickerApp/MultiDatePicker Source/MultiDatePicker.swift"; sourceTree = "<group>"; };
+		A5D16F872A85262C009BE16E /* MDPMonthYearPickerButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MDPMonthYearPickerButton.swift; sourceTree = "<group>"; };
+		A5D16F882A85262C009BE16E /* MDPDayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MDPDayView.swift; sourceTree = "<group>"; };
+		A5D16F892A85262C009BE16E /* MDPMonthView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MDPMonthView.swift; sourceTree = "<group>"; };
+		A5D16F8A2A85262C009BE16E /* MDPContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MDPContentView.swift; sourceTree = "<group>"; };
+		A5D16F8B2A85262C009BE16E /* MDPMonthYearPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MDPMonthYearPicker.swift; sourceTree = "<group>"; };
+		A5D16F8C2A85262C009BE16E /* MDPModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MDPModel.swift; sourceTree = "<group>"; };
+		A5D16F8D2A85262C009BE16E /* MDPDayOfMonth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MDPDayOfMonth.swift; sourceTree = "<group>"; };
+		A5D16F962A853CE2009BE16E /* CalendarSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarSheet.swift; sourceTree = "<group>"; };
 		A5DD13F22A46491100B15C2E /* Grades.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grades.swift; sourceTree = "<group>"; };
 		A5E3BDE32A403FE900755867 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		A5E3BDE52A40401600755867 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -118,6 +140,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A50781812A8547F90006225F /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				A50781822A85480D0006225F /* SchedulesSettings.swift */,
+				A50781842A85486C0006225F /* GradesSettings.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
 		A514DFB82A7E035800748BDA /* DailyWidget */ = {
 			isa = PBXGroup;
 			children = (
@@ -203,7 +234,7 @@
 				A5083B912A45C14600B3093E /* LMSView.swift */,
 				A5DD13F22A46491100B15C2E /* Grades.swift */,
 				A59ECEF12A7FCF6100FB45B3 /* Schedules.swift */,
-				A59ECEF62A7FD2CD00FB45B3 /* Settings.swift */,
+				A59ECEF62A7FD2CD00FB45B3 /* SettingsView.swift */,
 				A50C78E22A8005AF008A22E1 /* AppNavigator.swift */,
 			);
 			path = Views;
@@ -212,10 +243,13 @@
 		A578096E2A3F111400B7AF6B /* Supporting Views */ = {
 			isa = PBXGroup;
 			children = (
+				A50781812A8547F90006225F /* Settings */,
+				A5D16F732A8525CA009BE16E /* MultiDatePicker */,
 				A578096A2A3E57F300B7AF6B /* DayView.swift */,
 				A578096C2A3E601200B7AF6B /* LessonView.swift */,
 				A504A2FD2A4857FA002197BD /* TransientStatusNew.swift */,
 				A51C637D2A6D265A0026ABB4 /* ErrorScreen.swift */,
+				A5D16F962A853CE2009BE16E /* CalendarSheet.swift */,
 			);
 			path = "Supporting Views";
 			sourceTree = "<group>";
@@ -235,6 +269,30 @@
 				A58D080F2A40E6E600AD7A26 /* SwiftUI.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A5D16F732A8525CA009BE16E /* MultiDatePicker */ = {
+			isa = PBXGroup;
+			children = (
+				A5D16F862A85262C009BE16E /* Components */,
+				A5D16F852A85262B009BE16E /* MultiDatePicker.swift */,
+			);
+			path = MultiDatePicker;
+			sourceTree = "<group>";
+		};
+		A5D16F862A85262C009BE16E /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				A5D16F872A85262C009BE16E /* MDPMonthYearPickerButton.swift */,
+				A5D16F882A85262C009BE16E /* MDPDayView.swift */,
+				A5D16F892A85262C009BE16E /* MDPMonthView.swift */,
+				A5D16F8A2A85262C009BE16E /* MDPContentView.swift */,
+				A5D16F8B2A85262C009BE16E /* MDPMonthYearPicker.swift */,
+				A5D16F8C2A85262C009BE16E /* MDPModel.swift */,
+				A5D16F8D2A85262C009BE16E /* MDPDayOfMonth.swift */,
+			);
+			name = Components;
+			path = "../../../../MultiDatePicker/MultiDatePickerApp/MultiDatePicker Source/Components";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -297,7 +355,7 @@
 				};
 			};
 			buildConfigurationList = A57809462A3E4B9E00B7AF6B /* Build configuration list for PBXProject "raspisansu" */;
-			compatibilityVersion = "Xcode 14.0";
+			compatibilityVersion = "Xcode 15.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -358,21 +416,32 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A5D16F922A85262C009BE16E /* MDPContentView.swift in Sources */,
 				A578096D2A3E601200B7AF6B /* LessonView.swift in Sources */,
 				A51C637E2A6D265A0026ABB4 /* ErrorScreen.swift in Sources */,
 				A5083B922A45C14600B3093E /* LMSView.swift in Sources */,
 				A514DFB02A7E01BB00748BDA /* WebViewModel.swift in Sources */,
 				A57809512A3E4B9E00B7AF6B /* ContentView.swift in Sources */,
 				A57809732A3F21B800B7AF6B /* Dates.swift in Sources */,
+				A5D16F942A85262C009BE16E /* MDPModel.swift in Sources */,
+				A5D16F952A85262C009BE16E /* MDPDayOfMonth.swift in Sources */,
 				A578096B2A3E57F300B7AF6B /* DayView.swift in Sources */,
+				A50781852A85486C0006225F /* GradesSettings.swift in Sources */,
+				A5D16F8F2A85262C009BE16E /* MDPMonthYearPickerButton.swift in Sources */,
+				A50781832A85480D0006225F /* SchedulesSettings.swift in Sources */,
 				A51B04D12A7FC4FC0019195D /* Requests.swift in Sources */,
 				A504A2FE2A4857FA002197BD /* TransientStatusNew.swift in Sources */,
 				A50C78E32A8005AF008A22E1 /* AppNavigator.swift in Sources */,
+				A5D16F972A853CE2009BE16E /* CalendarSheet.swift in Sources */,
 				A59ECEF22A7FCF6100FB45B3 /* Schedules.swift in Sources */,
 				A578094F2A3E4B9E00B7AF6B /* LoungeApp.swift in Sources */,
+				A5D16F8E2A85262C009BE16E /* MultiDatePicker.swift in Sources */,
 				A5083B902A45C04600B3093E /* SchedulesNavigator.swift in Sources */,
+				A5D16F912A85262C009BE16E /* MDPMonthView.swift in Sources */,
+				A5D16F902A85262C009BE16E /* MDPDayView.swift in Sources */,
 				A59ECEF42A7FCFA100FB45B3 /* SettingsModel.swift in Sources */,
-				A59ECEF72A7FD2CD00FB45B3 /* Settings.swift in Sources */,
+				A5D16F932A85262C009BE16E /* MDPMonthYearPicker.swift in Sources */,
+				A59ECEF72A7FD2CD00FB45B3 /* SettingsView.swift in Sources */,
 				A5DD13F32A46491100B15C2E /* Grades.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -410,25 +479,26 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = 89P49T5697;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DailyWidget/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "daily-widget";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 13.5;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "space.utme.raspisansu.daily-widget";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
 				SUPPORTS_MACCATALYST = NO;
-				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -446,25 +516,26 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = 89P49T5697;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DailyWidget/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "daily-widget";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 13.5;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "space.utme.raspisansu.daily-widget";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
 				SUPPORTS_MACCATALYST = NO;
-				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -527,9 +598,9 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MACOSX_DEPLOYMENT_TARGET = 13.5;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -588,9 +659,9 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MACOSX_DEPLOYMENT_TARGET = 13.5;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -610,7 +681,7 @@
 				CODE_SIGN_ENTITLEMENTS = Lounge/lounge.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_ASSET_PATHS = Lounge/Assets.xcassets;
 				DEVELOPMENT_TEAM = 89P49T5697;
 				ENABLE_PREVIEWS = YES;
@@ -625,7 +696,7 @@
 				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -635,9 +706,9 @@
 				PRODUCT_BUNDLE_IDENTIFIER = space.utme.raspisansu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
 				SUPPORTS_MACCATALYST = NO;
-				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -655,7 +726,7 @@
 				CODE_SIGN_ENTITLEMENTS = Lounge/lounge.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_ASSET_PATHS = Lounge/Assets.xcassets;
 				DEVELOPMENT_TEAM = 89P49T5697;
 				ENABLE_PREVIEWS = YES;
@@ -670,7 +741,7 @@
 				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -680,9 +751,9 @@
 				PRODUCT_BUNDLE_IDENTIFIER = space.utme.raspisansu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
 				SUPPORTS_MACCATALYST = NO;
-				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

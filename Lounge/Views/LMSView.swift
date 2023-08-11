@@ -65,9 +65,17 @@ struct LMSView: View {
             Image(systemName: "arrow.clockwise")
           })
         }
+        #if os(macOS)
+        ToolbarItem(placement: .primaryAction) {
+          ShareLink(item: model.url)
+        }
+        #endif
       })
-      .navigationDocument(model.url)
       .navigationTitle(model.title ?? "lms.title")
+#if os(iOS)
+      .navigationDocument(model.url)
+      .navigationBarTitleDisplayMode(.inline)
+#endif
   }
 }
 
