@@ -70,11 +70,12 @@ struct AppNavigator: View {
               }
             }
           }
-          
         }
       }
 #endif
       .navigationTitle("Lounge")
+      
+      Schedules(from: Date().startOfWeek, to: Date().endOfWeek, periodName: "main.this_week")
     }
   }
 }

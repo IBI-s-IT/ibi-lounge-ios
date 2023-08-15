@@ -15,35 +15,42 @@ struct GradesSettings: View {
       VStack(alignment: .leading) {
         TextField("grades.pin", text: $settings.pin)
           .autocorrectionDisabled(true)
-        switch settings.pinValidity {
-        case .empty:
-          Text("valid.pin_empty")
-            .font(.caption);
-        case .count:
-          Text("valid.pin_length")
-            .font(.caption);
-        case .okay:
-          EmptyView()
+        Group {
+          switch settings.pinValidity {
+          case .empty:
+            Text("valid.pin_empty")
+          case .count:
+            Text("valid.pin_length")
+          case .okay:
+            EmptyView()
+          }
         }
+        .font(.caption)
+        .foregroundStyle(.red)
       }
       VStack(alignment: .leading) {
         TextField("grades.lastName", text: $settings.lastName)
-        switch settings.lastNameValidity {
-        case .empty:
-          Text("valid.last_name_empty")
-            .font(.caption);
-        case .count:
-          Text("valid.last_name_length")
-            .font(.caption);
-        case .okay:
-          EmptyView()
+        Group {
+          switch settings.lastNameValidity {
+          case .empty:
+            Text("valid.last_name_empty")
+          case .count:
+            Text("valid.last_name_length")
+          case .okay:
+            EmptyView()
+          }
         }
+        .font(.caption)
+        .foregroundStyle(.red)
       }
     }
   }
 }
 
 #Preview {
-  GradesSettings()
-    .environmentObject(SettingsModel())
+  List {
+    GradesSettings()
+      .environmentObject(SettingsModel())
+  }
+
 }

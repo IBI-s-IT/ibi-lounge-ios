@@ -45,6 +45,7 @@ struct GradesView: View {
   }
   
   func fetch() async {
+    self.grades = .error(.loading)
     grades = await Requests().fetchGrades(pin: settings.pin, lastName: settings.lastName)
   }
 }

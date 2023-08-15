@@ -51,6 +51,7 @@ struct SettingsView: View {
   }
   
   func updateGroups() async {
+    self.groups = .error(.loading)
     groups = await Requests().fetchGroups(educationLevel: settings.educationLevel)
   }
 }

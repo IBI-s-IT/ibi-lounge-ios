@@ -7,18 +7,18 @@
 "main.to" = "To";
 "main.done" = "Done";
 
-"schedules.is_online" = "🌎 Online";
+"schedules.is_online" = "Online";
 
 "schedules.place %@" = "🗺️ %@";
-"schedules.consultation" = "ℹ️ Consultation";
-"schedules.exam" = "🚨 Exam";
-"schedules.lecture" = "📖 Lecture";
-"schedules.practice" = "⛏️ Practice";
-"schedules.library_day" = "📚 Library day";
-"schedules.subject_report" = "⚠️ Test";
-"schedules.subject_report_with_grade" = "⚠️ Graded test";
-"schedules.project_work" = "👥 Project work";
-"schedules.unknown" = "‼️ Unknown";
+"schedules.consultation" = "Consultation";
+"schedules.exam" = "Exam";
+"schedules.lecture" = "Lecture";
+"schedules.practice" = "Practice";
+"schedules.library_day" = "Library day";
+"schedules.subject_report" = "Test";
+"schedules.subject_report_with_grade" = "Graded test";
+"schedules.project_work" = "Project work";
+"schedules.unknown" = "Unknown";
 
 "settings.title" = "Preferences";
 "settings.section.schedule" = "Schedules";
@@ -81,3 +81,17 @@
 "widget.left %@" = "%@ more classes...";
 "widget.name" = "Classes today and tomorrow";
 "widget.description" = "See your current classes directly from the Home Screen";
+
+"onboarding.welcome1" = "Welcome to";
+"onboarding.item1.title" = "All in one for IBI";
+"onboarding.item1.subtitle" = "Here are the courses, the schedule and your grades";
+"onboarding.item2.title" = "Schedule widget";
+"onboarding.item2.subtitle" = "Displays the remaining activities for today and tomorrow on the Home screen";
+"onboarding.item3.title" = "Grades";
+"onboarding.item3.subtitle" = "Quick access to grades from the app";
+"onboarding.disclaimer1" = "Important! This application is intended for Internation Banking Institute named after Anatoliy Sobchak";
+"onboarding.disclaimer2" = "You can change these settings later";
+"onboarding.proceed1" = "Set me up";
+"onboarding.proceed2" = "Done";
+"onboarding.schedules.footnote" = "This data will be needed to display your schedule";
+"onboarding.grades.footnote" = "This data will be needed to display your grades";

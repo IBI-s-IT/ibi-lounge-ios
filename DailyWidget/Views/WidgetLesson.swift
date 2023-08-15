@@ -29,8 +29,7 @@ struct WidgetLesson: View {
           }
         }
       }
-      .font(.caption2)
-      .fontWeight(.semibold)
+      .font(.caption2.weight(.semibold))
       .frame(minWidth: 0, maxWidth: .infinity, alignment: .topLeading)
       Text(lesson.text)
         .lineLimit(1)

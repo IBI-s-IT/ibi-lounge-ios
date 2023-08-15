@@ -7,13 +7,21 @@
 
 import SwiftUI
 
+
 struct ContentView: View {
+  @AppStorage("showOnboarding2") var showOnboarding = true;
   var body: some View {
-    #if os(macOS)
-      AppNavigator()
-    #else
+#if os(macOS)
+    AppNavigator()
+      .sheet(isPresented: $showOnboarding, content: {
+        OnboardingSheet()
+      })
+#else
     if UIDevice.current.userInterfaceIdiom == .pad {
       AppNavigator()
+        .sheet(isPresented: $showOnboarding) {
+          OnboardingSheet()
+        }
     } else {
       TabView {
         SchedulesNavigator()
@@ -39,8 +47,11 @@ struct ContentView: View {
           Label("settings.title", systemImage: "gearshape")
         }
       }
+      .sheet(isPresented: $showOnboarding, content: {
+        OnboardingSheet()
+      })
     }
-    #endif
+#endif
   }
 }
 

@@ -8,18 +8,18 @@
 "main.to" = "До";
 "main.done" = "Готово";
 
-"schedules.is_online" = "🌎 Онлайн";
+"schedules.is_online" = "Онлайн";
 "schedules.place %@" = "🗺️ %@";
 
-"schedules.consultation" = "ℹ️ Консультация";
-"schedules.exam" = "🚨 Экзамен";
-"schedules.lecture" = "📖 Лекция";
-"schedules.practice" = "⛏️ Практика";
-"schedules.library_day" = "📚 Библ. день";
-"schedules.subject_report" = "⚠️ Зачёт";
-"schedules.subject_report_with_grade" = "⚠️ Диф. зачёт";
-"schedules.project_work" = "👥 Проект. деят.";
-"schedules.unknown" = "‼️ Незвестно";
+"schedules.consultation" = "Консультация";
+"schedules.exam" = "Экзамен";
+"schedules.lecture" = "Лекция";
+"schedules.practice" = "Практика";
+"schedules.library_day" = "Библ. день";
+"schedules.subject_report" = "Зачёт";
+"schedules.subject_report_with_grade" = "Диф. зачёт";
+"schedules.project_work" = "Проект. деят.";
+"schedules.unknown" = "Незвестно";
 
 "settings.title" = "Параметры";
 "settings.section.schedule" = "Расписание";
@@ -80,3 +80,17 @@
 "widget.left %@" = "ещё %@...";
 "widget.name" = "Пары на сегодня и завтра";
 "widget.description" = "Смотрите свои текущие пары прямо с экрана \"Домой\"";
+
+"onboarding.welcome1" = "Добро пожаловать в";
+"onboarding.item1.title" = "Всё в одном для МБИ";
+"onboarding.item1.subtitle" = "Здесь есть и ЕЭОС и расписание и ваши оценки";
+"onboarding.item2.title" = "Виджет расписания";
+"onboarding.item2.subtitle" = "Отобразит непройденные пары на сегодня и на завтра на экране Домой";
+"onboarding.item3.title" = "Оценки";
+"onboarding.item3.subtitle" = "Быстрый доступ к оценкам из приложения";
+"onboarding.disclaimer1" = "Важно! Это приложение предназначено для АНО ВО МБИ им. Анатолия Собчака";
+"onboarding.disclaimer2" = "Вы сможете позже изменить эти настройки";
+"onboarding.proceed1" = "Настроить";
+"onboarding.proceed2" = "Приступим";
+"onboarding.schedules.footnote" = "Эти данные понадобятся для отображения вашего расписания";
+"onboarding.grades.footnote" = "Эти данные понадобятся для отображения ваших оценок";

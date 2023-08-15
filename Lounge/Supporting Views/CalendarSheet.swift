@@ -8,25 +8,71 @@
 import SwiftUI
 
 struct CalendarSheet: View {
-  @Environment(\.dismiss) private var dismiss
   var range: Binding<ClosedRange<Date>?>
+  var isPresented: Binding<Bool>;
+  
+  func hideSheet() {
+    withAnimation {
+      isPresented.wrappedValue = false;
+    }
+  }
   
   var body: some View {
-    NavigationStack {
-      MultiDatePicker(dateRange: range)
-        .padding(.top, 10)
-        .padding(.bottom, 10)
-        .toolbar {
-          ToolbarItem(placement: .automatic) {
-            Button("main.done") {
-              dismiss()
+    if isPresented.wrappedValue {
+      GeometryReader { geometry in
+        ZStack {
+          Rectangle()
+            .frame(width: geometry.size.width, height: geometry.size.height)
+            .opacity(0.3)
+            .layoutPriority(-1)
+            .onTapGesture {
+              if range.wrappedValue != nil {
+                hideSheet()
+              }
             }
-            .disabled(range.wrappedValue == nil)
+#if os(iOS)
+          NavigationStack {
+            MultiDatePicker(dateRange: range)
+              .padding(.top, 10)
+              .padding(.bottom, 10)
+              .toolbar {
+                ToolbarItem(placement: .automatic) {
+                  Button("main.done") {
+                    hideSheet()
+                  }
+                  .disabled(range.wrappedValue == nil)
+                }
+              }
+              .navigationTitle("main.custom_range")
+            
+              .navigationBarTitleDisplayMode(.inline)
           }
+          .frame(maxWidth: 350, maxHeight: 380)
+          .cornerRadius(10)
+#else
+          VStack(spacing: 0) {
+            MultiDatePicker(dateRange: range)
+            Divider()
+            HStack() {
+              Spacer()
+              Button("main.done") {
+                hideSheet()
+              }
+              .disabled(range.wrappedValue == nil)
+              .buttonStyle(.borderedProminent)
+              .padding()
+            }
+          }
+          .background(.cardBackground)
+          .cornerRadius(10)
+          .frame(maxWidth: 350, maxHeight: 300)
+#endif
         }
-        .navigationTitle("main.custom_range")
+        .ignoresSafeArea()
+        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
+      }
+      .ignoresSafeArea()
+      .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
     }
-    .presentationDetents([.height(380)])
-    .interactiveDismissDisabled(range.wrappedValue == nil)
   }
 }

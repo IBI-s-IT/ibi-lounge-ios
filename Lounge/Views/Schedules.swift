@@ -18,29 +18,25 @@ struct Schedules: View {
   @State var range: ClosedRange<Date>? = Date()...Date();
   @State private var isShowingCalendar = false
   
-  var content: some View {
+  var content: any View {
     switch days {
     case .response(let result):
-      AnyView(
-        ForEach(result.response!, id: \.self.date) { day in
-          DayView(
-            day: day
-          )
-        }
-      )
+      ForEach(result.response!, id: \.self.date) { day in
+        DayView(
+          day: day
+        )
+      }
     case .error(let error):
-      AnyView(
-        TransientStatusNew(error: error) {
-          Task.init { await fetch() }
-        }
-      )
+      TransientStatusNew(error: error) {
+        Task.init { await fetch() }
+      }
     }
   }
   
   var body: some View {
     if isEmbedded {
       VStack {
-        content
+        AnyView(content)
       }
       .task {
         await fetch()
@@ -53,20 +49,22 @@ struct Schedules: View {
               Text("main.custom_range")
               Spacer()
               Button("\((range?.lowerBound.formatted(date: .numeric, time: .omitted)) ?? "???") - \((range?.upperBound.formatted(date: .numeric, time: .omitted)) ?? "???")") {
-                self.isShowingCalendar = true
-              }
-              .sheet(isPresented: $isShowingCalendar) {
-                CalendarSheet(range: $range)
-                  .onChange(of: range) { newValue in
-                    Task.init {
-                      await fetch();
-                    }
-                  }
+                withAnimation {
+                  self.isShowingCalendar = true
+                }
               }
             }
           }
         }
-        content
+        AnyView(content)
+      }
+      .overlay {
+        CalendarSheet(range: $range, isPresented: $isShowingCalendar)
+          .onChange(of: range) { newValue in
+            Task.init {
+              await fetch();
+            }
+          }
       }
       .task {
         await fetch()
@@ -79,6 +77,8 @@ struct Schedules: View {
   }
   
   func fetch() async {
+    self.days = .error(.loading)
+    
     if isCustomPeriod {
       if range != nil {
         days = await Requests().fetchSchedules(

@@ -12,10 +12,10 @@ let groupsEndpoint = "https://rasp-back.utme.space/groups";
 let gradesEndpoint = "https://rasp-back.utme.space/grades"
 
 struct Groups: Codable {
-  var response: [Group];
+  var response: [EduGroup];
 }
 
-struct Group: Codable {
+struct EduGroup: Codable {
   var id: String;
   var name: String;
 }
@@ -136,6 +136,27 @@ enum LessonType: String, Codable {
   case subject_report
   case consultation
   case subject_report_with_grade
+
+  var emoji: String {
+    switch self {
+    case .practice:
+      return "🔨"
+    case .lecture:
+      return "📖"
+    case .library_day:
+      return "📚"
+    case .project_work:
+      return "👥"
+    case .exam:
+      return "🚨"
+    case .subject_report:
+      return "⚠️"
+    case .consultation:
+      return "ℹ️"
+    case .subject_report_with_grade:
+      return "⚠️"
+    }
+  }
 }
 
 enum DaysRequestResult {

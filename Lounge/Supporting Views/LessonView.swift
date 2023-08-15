@@ -52,15 +52,32 @@ struct LessonView: View {
       Spacer()
       VStack(alignment: .trailing) {
         if lesson.additional?.type != nil {
-          Text(LocalizedStringKey(String("schedules.\(lesson.additional!.type!.rawValue)")))
-            .font(.footnote)
-            .padding(.bottom, 0.5)
+          HStack {
+            Text(LocalizedStringKey(String("schedules.\(lesson.additional!.type!.rawValue)")))
+            Text(lesson.additional!.type!.emoji)
+          }
+          .padding(.bottom, 0.5)
         }
-        Text(
-          lesson.additional?.is_online ?? false ? LocalizedStringKey("schedules.is_online") : LocalizedStringKey("schedules.place \(lesson.additional?.location ?? "Неизвестно")")
-        )
-        .font(.footnote)
+        if lesson.additional?.is_online ?? false {
+          HStack {
+            Text(LocalizedStringKey("schedules.is_online"))
+            Text("🌎")
+          }
+        } else if lesson.additional?.location != nil {
+          HStack {
+            Text(lesson.additional!.location!)
+            Text("🗺️")
+          }
+        } else {
+          HStack {
+            Text("schedules.unknown")
+            Text("🤨")
+          }
+        }
       }
+      .font(.footnote)
+      .imageScale(.medium)
+      .symbolRenderingMode(.multicolor)
       
       if lesson.additional?.url != nil {
         Image(systemName: "chevron.right")

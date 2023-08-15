@@ -14,7 +14,10 @@ struct TransientStatusNew: View {
   var body: some View {
     switch error {
     case .loading:
-      ProgressView()
+      VStack {
+        ProgressView()
+      }
+      .frame(maxWidth: .infinity, maxHeight: .infinity)
     default:
       ErrorScreen(icon: error.icon, title: error.title, description: error.description, code: error.rawValue, action: action)
     }

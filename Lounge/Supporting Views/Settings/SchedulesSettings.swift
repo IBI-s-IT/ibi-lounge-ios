@@ -10,7 +10,7 @@ import SwiftUI
 struct SchedulesSettings: View {
   @EnvironmentObject var settings: SettingsModel;
   @State var groups: GroupsResult = .error(.loading);
-
+  
   var body: some View {
     Section("settings.section.schedule") {
       Picker("settings.education_level", selection: $settings.educationLevel) {
@@ -52,6 +52,8 @@ struct SchedulesSettings: View {
 }
 
 #Preview {
-  SchedulesSettings()
-    .environmentObject(SettingsModel())
+  List {
+    SchedulesSettings()
+  }
+  .environmentObject(SettingsModel())
 }
