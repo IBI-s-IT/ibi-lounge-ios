@@ -35,12 +35,29 @@ struct Schedules: View {
   
   var body: some View {
     if isEmbedded {
-      VStack {
+      List {
+        NavigationLink {
+          Schedules(from: Date().startOfNextWeek, to: Date().endOfNextWeek, periodName: "main.next_week")
+        } label: {
+          Text("main.next_week")
+        }
+        NavigationLink {
+          Schedules(from: Date().startOfMonth(), to: Date().endOfMonth(), periodName: "main.this_month")
+        } label: {
+          Text("main.this_month")
+        }
+        NavigationLink {
+          Schedules(from: .now, to: .now, periodName: "main.custom_range", isCustomPeriod: true)
+        } label: {
+          Text("main.custom_range")
+        }
         AnyView(content)
       }
+      .listStyle(.insetGrouped)
       .task {
         await fetch()
       }
+      
     } else {
       List {
         if isCustomPeriod {
