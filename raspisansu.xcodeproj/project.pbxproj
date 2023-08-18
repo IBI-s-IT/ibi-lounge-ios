@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 60;
+	objectVersion = 56;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -369,7 +369,7 @@
 				};
 			};
 			buildConfigurationList = A57809462A3E4B9E00B7AF6B /* Build configuration list for PBXProject "raspisansu" */;
-			compatibilityVersion = "Xcode 15.0";
+			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -379,7 +379,6 @@
 			);
 			mainGroup = A57809422A3E4B9E00B7AF6B;
 			packageReferences = (
-				A514DFAC2A7DE8D400748BDA /* XCRemoteSwiftPackageReference "atlantis" */,
 			);
 			productRefGroup = A578094C2A3E4B9E00B7AF6B /* Products */;
 			projectDirPath = "";
@@ -496,7 +495,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 9;
+				CURRENT_PROJECT_VERSION = 10;
 				DEVELOPMENT_TEAM = 89P49T5697;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DailyWidget/Info.plist;
@@ -533,7 +532,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 9;
+				CURRENT_PROJECT_VERSION = 10;
 				DEVELOPMENT_TEAM = 89P49T5697;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DailyWidget/Info.plist;
@@ -698,7 +697,7 @@
 				CODE_SIGN_ENTITLEMENTS = Lounge/lounge.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 9;
+				CURRENT_PROJECT_VERSION = 10;
 				DEVELOPMENT_ASSET_PATHS = Lounge/Assets.xcassets;
 				DEVELOPMENT_TEAM = 89P49T5697;
 				ENABLE_PREVIEWS = YES;
@@ -743,7 +742,7 @@
 				CODE_SIGN_ENTITLEMENTS = Lounge/lounge.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 9;
+				CURRENT_PROJECT_VERSION = 10;
 				DEVELOPMENT_ASSET_PATHS = Lounge/Assets.xcassets;
 				DEVELOPMENT_TEAM = 89P49T5697;
 				ENABLE_PREVIEWS = YES;
@@ -809,17 +808,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		A514DFAC2A7DE8D400748BDA /* XCRemoteSwiftPackageReference "atlantis" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/ProxymanApp/atlantis";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.22.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
 	};
 	rootObject = A57809432A3E4B9E00B7AF6B /* Project object */;
 }
