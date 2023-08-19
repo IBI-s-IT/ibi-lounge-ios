@@ -48,15 +48,8 @@ struct ErrorScreen: View {
   }
 }
 
-#Preview {
-  ErrorScreen(icon: "gear", title: "title", description: "description", code: "123") {
-    print("try")
-  }
-  .frame(width: 360, height: 640)
-}
-
-#Preview {
-  List {
+struct ErrorScreen_Previews: PreviewProvider {
+  static var previews: some View {
     ErrorScreen(icon: "gear", title: "title", description: "description", code: "123") {
       print("try")
     }

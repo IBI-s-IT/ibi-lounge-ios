@@ -90,11 +90,12 @@ struct OnboardingSheet: View {
   }
 }
 
-
-#Preview {
-  NavigationStack {}
-    .sheet(isPresented: .constant(true), content: {
-      OnboardingSheet()
-    })
-    .environmentObject(SettingsModel())
+struct OnboardingSheet_Previews: PreviewProvider {
+  static var previews: some View {
+    NavigationStack {}
+      .sheet(isPresented: .constant(true), content: {
+        OnboardingSheet()
+      })
+      .environmentObject(SettingsModel())
+  }
 }

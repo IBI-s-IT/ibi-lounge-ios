@@ -20,7 +20,10 @@ struct SchedulesNavigator: View {
   }
 }
 
-#Preview {
-  SchedulesNavigator()
-    .environmentObject(SettingsModel())
+struct SchedulesNavigator_Previews: PreviewProvider {
+  static var previews: some View {
+    SchedulesNavigator()
+      .environmentObject(SettingsModel())
+  }
 }
+

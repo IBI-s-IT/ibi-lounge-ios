@@ -25,45 +25,47 @@ struct DayView: View {
   }
 }
 
-#Preview {
-  List() {
-    DayView(
-      day: Day(date: Date(), lessons: [
-        Lesson(
-          text: "Операц.сист",
-          time_start: Date(timeIntervalSince1970: 1682316000),
-          time_end: Date(timeIntervalSince1970: 1682321400),
-          additional:
-            AdditionalLesson(
-              is_online: true,
-              type: LessonType.exam,
-              teacher_name: "Андреев И.В."
-            )
-        ),
-        Lesson(
-          text: "Операц.сист",
-          time_start: Date(timeIntervalSince1970: 1682321400),
-          time_end: Date(timeIntervalSince1970: 1682321400),
-          additional:
-            AdditionalLesson(
-              is_online: true,
-              type: LessonType.exam,
-              teacher_name: "Андреев И.В."
-            )
-        ),
-        Lesson(
-          text: "Операц.сист",
-          time_start: Date(timeIntervalSince1970: 1682322800),
-          time_end: Date(timeIntervalSince1970: 1682341401),
-          additional:
-            AdditionalLesson(
-              is_online: true,
-              type: LessonType.exam,
-              teacher_name: "Андреев И.В."
-            )
-        )
-      ])
-    )
+struct DayView_Previews: PreviewProvider {
+  static var previews: some View {
+    List() {
+      DayView(
+        day: Day(date: Date(), lessons: [
+          Lesson(
+            text: "Операц.сист",
+            time_start: Date(timeIntervalSince1970: 1682316000),
+            time_end: Date(timeIntervalSince1970: 1682321400),
+            additional:
+              AdditionalLesson(
+                is_online: true,
+                type: LessonType.exam,
+                teacher_name: "Андреев И.В."
+              )
+          ),
+          Lesson(
+            text: "Операц.сист",
+            time_start: Date(timeIntervalSince1970: 1682321400),
+            time_end: Date(timeIntervalSince1970: 1682321400),
+            additional:
+              AdditionalLesson(
+                is_online: true,
+                type: LessonType.exam,
+                teacher_name: "Андреев И.В."
+              )
+          ),
+          Lesson(
+            text: "Операц.сист",
+            time_start: Date(timeIntervalSince1970: 1682322800),
+            time_end: Date(timeIntervalSince1970: 1682341401),
+            additional:
+              AdditionalLesson(
+                is_online: true,
+                type: LessonType.exam,
+                teacher_name: "Андреев И.В."
+              )
+          )
+        ])
+      )
+    }
+    .listStyle(.plain)
   }
-  .listStyle(.plain)
 }

@@ -47,10 +47,11 @@ struct GradesSettings: View {
   }
 }
 
-#Preview {
-  List {
-    GradesSettings()
-      .environmentObject(SettingsModel())
+struct GradesSettings_Previews: PreviewProvider {
+  static var previews: some View {
+    List {
+      GradesSettings()
+        .environmentObject(SettingsModel())
+    }
   }
-
 }

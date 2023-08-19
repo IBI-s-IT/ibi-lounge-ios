@@ -18,18 +18,18 @@ struct Schedules: View {
   @State var range: ClosedRange<Date>? = Date()...Date();
   @State private var isShowingCalendar = false
   
-  var content: any View {
+  func content() -> AnyView {
     switch days {
     case .response(let result):
-      ForEach(result.response!, id: \.self.date) { day in
+      return AnyView(ForEach(result.response!, id: \.self.date) { day in
         DayView(
           day: day
         )
-      }
+      })
     case .error(let error):
-      TransientStatusNew(error: error) {
+      return AnyView(TransientStatusNew(error: error) {
         Task.init { await fetch() }
-      }
+      })
     }
   }
   
@@ -51,9 +51,8 @@ struct Schedules: View {
         } label: {
           Text("main.custom_range")
         }
-        AnyView(content)
+        content()
       }
-      .listStyle(.insetGrouped)
       .task {
         await fetch()
       }
@@ -73,7 +72,7 @@ struct Schedules: View {
             }
           }
         }
-        AnyView(content)
+        content()
       }
       .overlay {
         CalendarSheet(range: $range, isPresented: $isShowingCalendar)
@@ -115,7 +114,10 @@ struct Schedules: View {
   }
 }
 
-#Preview {
-  Schedules()
-    .environmentObject(SettingsModel())
+
+struct Schedules_Previews: PreviewProvider {
+  static var previews: some View {
+    Schedules()
+      .environmentObject(SettingsModel())
+  }
 }

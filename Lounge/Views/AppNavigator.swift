@@ -57,19 +57,21 @@ struct AppNavigator: View {
 #if os(macOS)
       .toolbar {
         ToolbarItem {
-          if #available(macOS 14, *) {
-            SettingsLink(label: {
-              Label("settings.title", systemImage: "gearshape")
-            })
-          } else {
-            Button("settings.title", systemImage: "gearshape") {
-              if #available(macOS 13, *) {
-                NSApp.sendAction(Selector(("showSettingsWindow:")), to: nil, from: nil)
-              } else {
-                NSApp.sendAction(Selector(("showPreferencesWindow:")), to: nil, from: nil)
-              }
+          //if #available(macOS 14, *) {
+          //SettingsLink(label: {
+          //Label("settings.title", systemImage: "gearshape")
+          //})
+          //} else {
+          Button {
+            if #available(macOS 13, *) {
+              NSApp.sendAction(Selector(("showSettingsWindow:")), to: nil, from: nil)
+            } else {
+              NSApp.sendAction(Selector(("showPreferencesWindow:")), to: nil, from: nil)
             }
+          } label: {
+            Label("settings.title", systemImage: "gearshape")
           }
+          //}
         }
       }
 #endif
@@ -80,6 +82,8 @@ struct AppNavigator: View {
   }
 }
 
-#Preview {
-  AppNavigator()
+struct AppNavigator_Previews: PreviewProvider {
+  static var previews: some View {
+    AppNavigator()
+  }
 }

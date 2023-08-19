@@ -63,7 +63,7 @@ struct CalendarSheet: View {
               .padding()
             }
           }
-          .background(.cardBackground)
+          .background(.regularMaterial)
           .cornerRadius(10)
           .frame(maxWidth: 350, maxHeight: 300)
 #endif

@@ -89,95 +89,97 @@ struct LessonView: View {
   }
 }
 
-#Preview {
-  List() {
-    LessonView(
-      lesson:
-        Lesson(
-          text: "Операц.сист",
-          time_start: Date(),
-          time_end: Date(),
-          additional:
-            AdditionalLesson(
-              is_online: true,
-              type: LessonType.exam,
-              teacher_name: "Андреев И.В."
-            )
-        )
-    )
-    LessonView(
-      lesson:
-        Lesson(
-          text: "Операц.сист",
-          time_start: Date(),
-          time_end: Date(),
-          additional:
-            AdditionalLesson(
-              is_online: true,
-              type: LessonType.lecture,
-              teacher_name: "Андреев И.В."
-            )
-        )
-    )
-    LessonView(
-      lesson:
-        Lesson(
-          text: "Операц.сист",
-          time_start: Date(),
-          time_end: Date(),
-          additional:
-            AdditionalLesson(
-              is_online: true,
-              type: LessonType.library_day,
-              teacher_name: "Андреев И.В."
-            )
-        )
-    )
-    LessonView(
-      lesson:
-        Lesson(
-          text: "Операц.сист",
-          time_start: Date(),
-          time_end: Date(),
-          additional:
-            AdditionalLesson(
-              is_online: true,
-              type: LessonType.consultation,
-              teacher_name: "Андреев И.В."
-            )
-        )
-    )
-    LessonView(
-      lesson:
-        Lesson(
-          text: "Операц.сист",
-          time_start: Date(),
-          time_end: Date(),
-          additional:
-            AdditionalLesson(
-              is_online: false,
-              type: LessonType.project_work,
-              location: "МС-45",
-              teacher_name: "Андреев И.В."
-            )
-        )
-    )
-    LessonView(
-      lesson:
-        Lesson(
-          text: "Операц.сист",
-          time_start: Date(),
-          time_end: Date(),
-          additional:
-            AdditionalLesson(
-              is_online: false,
-              type: LessonType.subject_report,
-              teacher_name: "Андреев И.В."
-            )
-        )
-    )
+struct LessonView_Previews: PreviewProvider {
+  static var previews: some View {
+    List {
+      LessonView(
+        lesson:
+          Lesson(
+            text: "Операц.сист",
+            time_start: Date(),
+            time_end: Date(),
+            additional:
+              AdditionalLesson(
+                is_online: true,
+                type: LessonType.exam,
+                teacher_name: "Андреев И.В."
+              )
+          )
+      )
+      LessonView(
+        lesson:
+          Lesson(
+            text: "Операц.сист",
+            time_start: Date(),
+            time_end: Date(),
+            additional:
+              AdditionalLesson(
+                is_online: true,
+                type: LessonType.lecture,
+                teacher_name: "Андреев И.В."
+              )
+          )
+      )
+      LessonView(
+        lesson:
+          Lesson(
+            text: "Операц.сист",
+            time_start: Date(),
+            time_end: Date(),
+            additional:
+              AdditionalLesson(
+                is_online: true,
+                type: LessonType.library_day,
+                teacher_name: "Андреев И.В."
+              )
+          )
+      )
+      LessonView(
+        lesson:
+          Lesson(
+            text: "Операц.сист",
+            time_start: Date(),
+            time_end: Date(),
+            additional:
+              AdditionalLesson(
+                is_online: true,
+                type: LessonType.consultation,
+                teacher_name: "Андреев И.В."
+              )
+          )
+      )
+      LessonView(
+        lesson:
+          Lesson(
+            text: "Операц.сист",
+            time_start: Date(),
+            time_end: Date(),
+            additional:
+              AdditionalLesson(
+                is_online: false,
+                type: LessonType.project_work,
+                location: "МС-45",
+                teacher_name: "Андреев И.В."
+              )
+          )
+      )
+      LessonView(
+        lesson:
+          Lesson(
+            text: "Операц.сист",
+            time_start: Date(),
+            time_end: Date(),
+            additional:
+              AdditionalLesson(
+                is_online: false,
+                type: LessonType.subject_report,
+                teacher_name: "Андреев И.В."
+              )
+          )
+      )
+    }
+    .listStyle(.plain)
+    .listRowSeparator(.hidden)
+    .listSectionSeparator(.hidden)
   }
-  .listStyle(.plain)
-  .listRowSeparator(.hidden)
-  .listSectionSeparator(.hidden)
 }

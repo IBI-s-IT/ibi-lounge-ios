@@ -24,18 +24,20 @@ struct TransientStatusNew: View {
   }
 }
 
-#Preview {
-  ScrollView {
-    TransientStatusNew(error: .network_error) {
-      print("try")
+struct TransientStatusNew_Previews: PreviewProvider {
+  static var previews: some View {
+    ScrollView {
+      TransientStatusNew(error: .network_error) {
+        print("try")
+      }
+      TransientStatusNew(error: .bad_error)
+      TransientStatusNew(error: .no_schedules)
+      TransientStatusNew(error: .no_groups)
+      TransientStatusNew(error: .no_grades)
+      TransientStatusNew(error: .no_education_level_specified)
+      TransientStatusNew(error: .timed_out)
+      TransientStatusNew(error: .unknown_error)
     }
-    TransientStatusNew(error: .bad_error)
-    TransientStatusNew(error: .no_schedules)
-    TransientStatusNew(error: .no_groups)
-    TransientStatusNew(error: .no_grades)
-    TransientStatusNew(error: .no_education_level_specified)
-    TransientStatusNew(error: .timed_out)
-    TransientStatusNew(error: .unknown_error)
+    .environment(\.locale, .init(identifier: "ru"))
   }
-  .environment(\.locale, .init(identifier: "ru"))
 }

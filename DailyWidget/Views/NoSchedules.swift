@@ -20,6 +20,8 @@ struct NoSchedules: View {
   }
 }
 
-#Preview {
-  NoSchedules()
+struct NoSchedules_Previews: PreviewProvider {
+    static var previews: some View {
+      NoSchedules()
+    }
 }

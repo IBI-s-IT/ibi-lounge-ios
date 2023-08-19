@@ -80,6 +80,8 @@ struct LMSView: View {
 }
 
 
-#Preview {
-  LMSView()
+struct LMSView_Previews: PreviewProvider {
+  static var previews: some View {
+    LMSView()
+  }
 }

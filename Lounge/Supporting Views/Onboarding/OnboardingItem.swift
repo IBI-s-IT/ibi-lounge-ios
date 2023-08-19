@@ -32,12 +32,14 @@ struct OnboardingItem: View {
   }
 }
 
-#Preview {
-  ScrollView {
-    VStack(alignment: .leading, spacing: 10) {
-      OnboardingItem(systemName: "graduationcap.fill", symbolColor: Color.cyan.gradient, title: "Всё в одном для МБИ", subtitle: "Здесь есть и ЕЭОС и расписание и ваши оценки")
-      OnboardingItem(systemName: "house.fill", symbolColor: Color.blue.gradient, title: "Виджет расписания", subtitle: "Отобразит непройденные пары на сегодня и на завтра на экране Домой")
-      OnboardingItem(systemName: "list.bullet.rectangle.fill", symbolColor: Color.purple.gradient, title: "Оценки", subtitle: "Быстрый доступ к оценкам из приложения")
+struct OnboardingItem_Previews: PreviewProvider {
+  static var previews: some View {
+    ScrollView {
+      VStack(alignment: .leading, spacing: 10) {
+        OnboardingItem(systemName: "graduationcap.fill", symbolColor: Color.cyan.gradient, title: "Всё в одном для МБИ", subtitle: "Здесь есть и ЕЭОС и расписание и ваши оценки")
+        OnboardingItem(systemName: "house.fill", symbolColor: Color.blue.gradient, title: "Виджет расписания", subtitle: "Отобразит непройденные пары на сегодня и на завтра на экране Домой")
+        OnboardingItem(systemName: "list.bullet.rectangle.fill", symbolColor: Color.purple.gradient, title: "Оценки", subtitle: "Быстрый доступ к оценкам из приложения")
+      }
     }
   }
 }

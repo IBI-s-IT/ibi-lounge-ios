@@ -51,9 +51,11 @@ struct SchedulesSettings: View {
   }
 }
 
-#Preview {
-  List {
-    SchedulesSettings()
+struct SchedulesSettings_Previews: PreviewProvider {
+  static var previews: some View {
+    List {
+      SchedulesSettings()
+    }
+    .environmentObject(SettingsModel())
   }
-  .environmentObject(SettingsModel())
 }

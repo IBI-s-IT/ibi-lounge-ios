@@ -50,7 +50,9 @@ struct GradesView: View {
   }
 }
 
-#Preview {
-  GradesView()
-    .environmentObject(SettingsModel())
+struct Grades_Previews: PreviewProvider {
+  static var previews: some View {
+    GradesView()
+      .environmentObject(SettingsModel())
+  }
 }

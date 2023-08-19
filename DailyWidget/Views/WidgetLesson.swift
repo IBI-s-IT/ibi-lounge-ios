@@ -45,16 +45,18 @@ struct WidgetLesson: View {
   }
 }
 
-#Preview {
-  WidgetLesson(lesson: Lesson(
-    text: "Операц.сист",
-    time_start: Date(),
-    time_end: Date(),
-    additional:
-      AdditionalLesson(
-        is_online: false,
-        type: LessonType.subject_report,
-        teacher_name: "Андреев И.В."
-      )
-  ))
+struct WidgetLesson_Previews: PreviewProvider {
+    static var previews: some View {
+      WidgetLesson(lesson: Lesson(
+        text: "Операц.сист",
+        time_start: Date(),
+        time_end: Date(),
+        additional:
+          AdditionalLesson(
+            is_online: false,
+            type: LessonType.subject_report,
+            teacher_name: "Андреев И.В."
+          )
+      ))
+    }
 }

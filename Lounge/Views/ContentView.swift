@@ -55,8 +55,10 @@ struct ContentView: View {
   }
 }
 
-#Preview {
-  ContentView()
-    .environment(\.locale, .init(identifier: "ru"))
-    .environmentObject(SettingsModel())
+struct ContentView_Previews: PreviewProvider {
+  static var previews: some View {
+    ContentView()
+      .environment(\.locale, .init(identifier: "ru"))
+      .environmentObject(SettingsModel())
+  }
 }

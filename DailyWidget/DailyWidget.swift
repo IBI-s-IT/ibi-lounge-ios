@@ -10,11 +10,11 @@ import SwiftUI
 
 extension View {
   func widgetBackground(_ color: Color) -> some View {
-    if #available(iOSApplicationExtension 17.0, macOSApplicationExtension 14.0, *) {
-      return containerBackground(color, for: .widget)
-    } else {
+    //if #available(iOSApplicationExtension 17.0, macOSApplicationExtension 14.0, *) {
+    //  return containerBackground(color, for: .widget)
+    //} else {
       return background(color)
-    }
+    //}
   }
 }
 
@@ -170,6 +170,6 @@ struct DailyWidget: Widget {
       .configurationDisplayName("widget.name")
       .description("widget.description")
       .supportedFamilies([.systemSmall, .systemMedium])
-      .contentMarginsDisabled()
+//      .contentMarginsDisabled()
   }
 }
