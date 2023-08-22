@@ -18,6 +18,8 @@ enum EducationLevel: String, CaseIterable {
   case undergraduate
   case specialty
   case additionals
+  case postgraduate
+  case magistracy
 }
 
 class SettingsModel: ObservableObject {
@@ -33,6 +35,7 @@ class SettingsModel: ObservableObject {
       self.lastNameValidity = self.validateLastName()
     }
   }
+  @AppStorage("lastDate") var lastDate: Date = .now
   private(set) var pinValidity: FieldValidation = .empty
   private(set) var lastNameValidity: FieldValidation = .empty
   

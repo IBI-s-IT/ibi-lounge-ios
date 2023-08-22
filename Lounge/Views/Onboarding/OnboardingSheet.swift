@@ -20,6 +20,12 @@ struct OnboardingSheet: View {
           .frame(width: 84, height: 84)
           .cornerRadius(22)
           .padding(.top)
+#elseif os(macOS)
+        Image(nsImage: NSImage(imageLiteralResourceName: "AppIcon"))
+          .resizable(resizingMode: .stretch)
+          .frame(width: 84, height: 84)
+          .cornerRadius(22)
+          .padding(.top)
 #endif
         Text("onboarding.welcome1")
         Text("IBI Lounge")

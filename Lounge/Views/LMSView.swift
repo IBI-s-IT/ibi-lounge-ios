@@ -37,7 +37,9 @@ struct WebView: NSViewRepresentable {
 #endif
 
 struct LMSView: View {
-  @StateObject var model = WebViewModel()
+  @EnvironmentObject var model: WebViewModel
+  @State var showSheet = false
+  @State var openedLink: MaterialsLinks? = .lms
   
   var body: some View {
     WebView(webView: model.webView)
@@ -65,17 +67,42 @@ struct LMSView: View {
             Image(systemName: "arrow.clockwise")
           })
         }
-        #if os(macOS)
+        if (model.isLoading) {
+          ToolbarItem(placement: .navigation) {
+            ProgressView()
+              .progressViewStyle(.circular)
+              .controlSize(.small)
+          }
+        }
+#if os(iOS)
+        if UIDevice.current.userInterfaceIdiom == .phone {
+          ToolbarItem {
+            Button {
+              showSheet = true
+            } label: {
+              Image(systemName: "list.bullet")
+            }
+            .sheet(isPresented: $showSheet) {
+              NavigationStack {
+                MaterialsNavigator(openedLink: $openedLink)
+              }.onChange(of: openedLink) { _ in
+                showSheet = false
+              }
+            }
+          }
+        }
+#endif
+#if os(macOS)
         ToolbarItem(placement: .primaryAction) {
           ShareLink(item: model.url)
         }
-        #endif
+#endif
       })
-      .navigationTitle(model.title ?? "lms.title")
 #if os(iOS)
       .navigationDocument(model.url)
       .navigationBarTitleDisplayMode(.inline)
 #endif
+      .navigationTitle(model.title ?? "lms.title")
   }
 }
 

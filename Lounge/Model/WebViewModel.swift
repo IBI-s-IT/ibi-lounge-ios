@@ -18,12 +18,12 @@ class WebViewModel: ObservableObject {
     webView.allowsBackForwardNavigationGestures = true;
     url = URL(string: "https://lms.ibispb.ru")!
     
-    loadUrl()
+    loadUrl(destUrl: url)
     setupBindings()
   }
   
-  func loadUrl() {
-    webView.load(URLRequest(url: url))
+  func loadUrl(destUrl: URL?) {
+    webView.load(URLRequest(url: destUrl ?? url))
   }
   
   func goForward() {
@@ -41,6 +41,7 @@ class WebViewModel: ObservableObject {
   @Published var canGoBack: Bool = false
   @Published var canGoForward: Bool = false
   @Published var title: String? = ""
+  @Published var isLoading: Bool = true
   
   private func setupBindings() {
     webView.publisher(for: \.canGoBack)
@@ -52,5 +53,8 @@ class WebViewModel: ObservableObject {
     
     webView.publisher(for: \.title)
       .assign(to: &$title)
+    
+    webView.publisher(for: \.isLoading)
+      .assign(to: &$isLoading)
   }
 }

@@ -7,7 +7,52 @@
 
 import Foundation
 
-extension Date {
+extension Date: RawRepresentable {
+  func monthToString() -> String {
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "LLLL"
+    return dateFormatter.string(from: self)
+  }
+  
+  func toString(format: String) -> String {
+    let formatter = DateFormatter()
+    formatter.calendar = Calendar.current
+    formatter.dateFormat = format
+    
+    return formatter.string(from: self)
+  }
+  
+  var yesterday: Date {
+    Calendar.current.date(byAdding: .day, value: -1, to: self)!
+  }
+  
+  var tomorrow: Date {
+    Calendar.current.date(byAdding: .day, value: 1, to: self)!
+  }
+  
+  private func isEqual(to date: Date, toGranularity component: Calendar.Component, in calendar: Calendar = .current) -> Bool {
+    var customCalendar = Calendar(identifier: .gregorian)
+    customCalendar.firstWeekday = 2
+    
+    return customCalendar.isDate(self, equalTo: date, toGranularity: component)
+  }
+  
+  func isInSameWeek(as date: Date) -> Bool {
+    isEqual(to: date, toGranularity: .weekOfYear)
+  }
+  
+  func isInSameDay(as date: Date) -> Bool {
+    isEqual(to: date, toGranularity: .day)
+  }
+  
+  public var rawValue: String {
+    self.timeIntervalSinceReferenceDate.description
+  }
+  
+  public init?(rawValue: String) {
+    self = Date(timeIntervalSinceReferenceDate: Double(rawValue) ?? 0.0)
+  }
+
   var startOfWeek: Date {
     let gregorian = Calendar(identifier: .iso8601)
     return gregorian.dateComponents([.calendar, .yearForWeekOfYear, .weekOfYear], from: self).date!
@@ -34,6 +79,15 @@ extension Date {
   
   func endOfMonth() -> Date {
     return Calendar.current.date(byAdding: DateComponents(month: 1, day: -1), to: self.startOfMonth())!
+  }
+  
+  func startOfNextMonth() -> Date {
+    let startNext = Calendar.current.date(byAdding: .month, value: 1, to: Date().startOfMonth())!;
+    return startNext;
+  }
+  
+  func endOfNextMonth() -> Date {
+    return Calendar.current.date(byAdding: DateComponents(month: 1, day: -1), to: self.startOfNextMonth())!
   }
   
   func getNext15Minutes() -> Date {

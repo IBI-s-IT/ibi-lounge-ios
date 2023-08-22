@@ -9,12 +9,18 @@ import SwiftUI
 
 struct GradesSettings: View {
   @EnvironmentObject var settings: SettingsModel;
-
+  
   var body: some View {
     Section("grades.data") {
       VStack(alignment: .leading) {
-        TextField("grades.pin", text: $settings.pin)
-          .autocorrectionDisabled(true)
+        LabeledContent("grades.pin") {
+          TextField("grades.pin", text: $settings.pin)
+            .autocorrectionDisabled(true)
+            .multilineTextAlignment(.trailing)
+#if os(macOS)
+            .labelsHidden()
+#endif
+        }
         Group {
           switch settings.pinValidity {
           case .empty:
@@ -29,7 +35,13 @@ struct GradesSettings: View {
         .foregroundStyle(.red)
       }
       VStack(alignment: .leading) {
-        TextField("grades.lastName", text: $settings.lastName)
+        LabeledContent("grades.lastName") {
+          TextField("grades.lastName", text: $settings.lastName)
+#if os(macOS)
+            .labelsHidden()
+#endif
+            .multilineTextAlignment(.trailing)
+        }
         Group {
           switch settings.lastNameValidity {
           case .empty:

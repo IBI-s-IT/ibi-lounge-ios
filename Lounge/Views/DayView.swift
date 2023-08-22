@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-func getDateFromatted(day: Day) -> String {
+func getDateFormatted(day: Day) -> String {
   let formatter = DateFormatter();
   formatter.setLocalizedDateFormatFromTemplate("dd.MM, EEEE");
   return formatter.string(from: day.date);
@@ -15,13 +15,38 @@ func getDateFromatted(day: Day) -> String {
 
 struct DayView: View {
   var day: Day;
+  var lightIsOn: Bool?
+  @Environment(\.locale) var locale
+  @State var image: Image? = nil
+  
+  var snapshot: some View {
+    DayViewSticker(day: day)
+  }
   
   var body: some View {
-    Section(getDateFromatted(day: day)) {
+    Section(getDateFormatted(day: day)) {
       ForEach(day.lessons) { lesson in
         LessonView(lesson: lesson)
       }
     }
+    .onAppear {
+      #if os(iOS)
+      image = Image(uiImage: render(
+        body: snapshot,
+        locale: locale
+      )!)
+      #elseif os(macOS)
+      image = Image(render(body: snapshot, locale: locale)!, scale: 3, label: Text("main.title"))
+      #endif
+    }
+    .draggable(image!, preview: {
+      DayViewSticker(day: day)
+    })
+    .shadow(
+      color: .blue.opacity(lightIsOn ?? false ? 1 : 0),
+      radius: lightIsOn ?? false ? 20 : 0
+    )
+    .id(day.date)
   }
 }
 
@@ -66,6 +91,5 @@ struct DayView_Previews: PreviewProvider {
         ])
       )
     }
-    .listStyle(.plain)
   }
 }

@@ -1,11 +1,15 @@
+"main.name" = "Lounge";
 "main.title" = "Schedules";
 "main.this_week" = "This week";
 "main.next_week" = "Next week";
 "main.this_month" = "This month";
+"main.next_month" = "Next month";
 "main.custom_range" = "Custom range";
 "main.from" = "From";
 "main.to" = "To";
 "main.done" = "Done";
+"main.today" = "Today";
+"main.period" = "Period";
 
 "schedules.is_online" = "Online";
 
@@ -95,3 +99,11 @@
 "onboarding.proceed2" = "Done";
 "onboarding.schedules.footnote" = "This data will be needed to display your schedule";
 "onboarding.grades.footnote" = "This data will be needed to display your grades";
+
+"transfer.title %@" = "📅 Schedule for %@";
+
+"materials.title" = "Materials";
+"materials.lms" = "Learning management system";
+"materials.news" = "News";
+"materials.employees" = "Teaching staff";
+"materials.contacts" = "Contacts";

@@ -61,8 +61,7 @@ struct DailyWidgetTimelineProvider: TimelineProvider {
   
   // Provides an array of timeline entries for the current time and, optionally, any future times to update a widget.
   func getTimeline(in context: Context, completion: @escaping (Timeline<DailyWidgetTimelineEntry>) -> Void) {
-    let settings = SettingsModel();
-    
+    let settings = SettingsModel()
     Task {
       do {
         let result = await Requests().fetchSchedules(from: .now, to: Date().advanced(by: 3600 * 24), group: settings.group);
