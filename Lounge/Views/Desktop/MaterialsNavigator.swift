@@ -20,13 +20,13 @@ enum MaterialsLinks: String, Identifiable, CaseIterable {
   var title: String {
     switch self {
     case .lms:
-      "materials.lms"
+      return "materials.lms"
     case .news:
-      "materials.news"
+      return "materials.news"
     case .employees:
-      "materials.employees"
+      return "materials.employees"
     case .contacts:
-      "materials.contacts"
+      return "materials.contacts"
     }
   }
   

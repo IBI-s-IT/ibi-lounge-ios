@@ -94,19 +94,7 @@ struct DeskNavigator: View {
       #if os(macOS)
       .toolbar {
         ToolbarItem(placement: .automatic) {
-          if #available(macOS 14.0, *) {
-            SettingsLink()
-          } else {
-            Button {
-              if #available(macOS 13, *) {
-                NSApp.sendAction(Selector(("showSettingsWindow:")), to: nil, from: nil)
-              } else {
-                NSApp.sendAction(Selector(("showPreferencesWindow:")), to: nil, from: nil)
-              }
-            } label: {
-              Label("settings.title", systemImage: "gearshape")
-            }
-          }
+          SettingsLink()
         }
       }
       .navigationSplitViewColumnWidth(178)

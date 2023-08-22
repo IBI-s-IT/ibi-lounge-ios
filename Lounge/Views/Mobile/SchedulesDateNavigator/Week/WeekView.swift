@@ -14,11 +14,9 @@ struct WeekView: View {
   
   var body: some View {
     HStack {
+      Spacer()
+        .frame(width: 16)
       ForEach(0..<7) { i in
-        if i == 0 {
-          Spacer()
-            .frame(width: 16)
-        }
         VStack {
           Text(week.dates[i].toString(format: "EEE").lowercased())
             .font(.caption2)
@@ -26,7 +24,7 @@ struct WeekView: View {
             .frame(maxWidth: .infinity)
         }
         .frame(width: 40, height: 40)
-        .background(week.dates[i] == week.referenceDate ? .blue : .cardBackground)
+        .background(week.dates[i] == week.referenceDate ? .blue : .background)
         .foregroundColor(week.dates[i] == week.referenceDate ? .white : .primary)
         .cornerRadius(10)
         .shadow(color: .black.opacity(0.06), radius: 4)
@@ -38,11 +36,10 @@ struct WeekView: View {
         }
         if i != 6 {
           Spacer()
-        } else {
-          Spacer()
-            .frame(width: 16)
         }
       }
+      Spacer()
+        .frame(width: 16)
     }
   }
 }
