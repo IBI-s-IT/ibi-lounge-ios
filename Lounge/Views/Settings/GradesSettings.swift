@@ -9,6 +9,7 @@ import SwiftUI
 
 struct GradesSettings: View {
   @EnvironmentObject var settings: SettingsModel;
+  var sectionHidden: Bool = false
   
   var body: some View {
     Section("grades.data") {

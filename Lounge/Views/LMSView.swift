@@ -40,10 +40,28 @@ struct LMSView: View {
   @EnvironmentObject var model: WebViewModel
   @State var showSheet = false
   @State var openedLink: MaterialsLinks? = .lms
-  
+
   var body: some View {
     WebView(webView: model.webView)
-      .toolbar(content: {
+      .toolbar {
+#if os(iOS)
+        if UIDevice.current.userInterfaceIdiom == .phone {
+          ToolbarItem(placement: .navigationBarLeading) {
+            Button {
+              showSheet = true
+            } label: {
+              Image(systemName: "list.bullet")
+            }
+            .sheet(isPresented: $showSheet) {
+              NavigationStack {
+                MaterialsNavigator(openedLink: $openedLink)
+              }.onChange(of: openedLink) { _ in
+                showSheet = false
+              }
+            }
+          }
+        }
+#endif
         ToolbarItem(placement: .navigation) {
           Button(action: {
             model.goBack()
@@ -74,30 +92,12 @@ struct LMSView: View {
               .controlSize(.small)
           }
         }
-#if os(iOS)
-        if UIDevice.current.userInterfaceIdiom == .phone {
-          ToolbarItem {
-            Button {
-              showSheet = true
-            } label: {
-              Image(systemName: "list.bullet")
-            }
-            .sheet(isPresented: $showSheet) {
-              NavigationStack {
-                MaterialsNavigator(openedLink: $openedLink)
-              }.onChange(of: openedLink) { _ in
-                showSheet = false
-              }
-            }
-          }
-        }
-#endif
 #if os(macOS)
         ToolbarItem(placement: .primaryAction) {
           ShareLink(item: model.url)
         }
 #endif
-      })
+      }
 #if os(iOS)
       .navigationDocument(model.url)
       .navigationBarTitleDisplayMode(.inline)

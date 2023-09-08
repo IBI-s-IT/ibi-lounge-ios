@@ -10,11 +10,12 @@ import SwiftUI
 struct GradesView: View {
   @EnvironmentObject var settings: SettingsModel;
   @State var grades: GradesResult = .error(.loading)
+  @State var taskId: UUID = .init()
   
-  var body: some View {
-    List {
-      switch grades {
-      case .result(let result):
+  func content() -> AnyView {
+    switch grades {
+    case .result(let result):
+      return AnyView(List {
         ForEach(result.response) { grade in
           HStack {
             VStack(alignment: .leading, content: {
@@ -27,21 +28,25 @@ struct GradesView: View {
               .foregroundStyle(.secondary)
           }
         }
-      case .error(let error):
-        TransientStatusNew(error: error) {
-          Task.init {
-            await fetch()
-          }
+      })
+    case .error(let error):
+      return AnyView(TransientStatusNew(error: error) {
+        taskId = .init()
+      })
+    }
+  }
+  
+  var body: some View {
+    NavigationStack {
+      content()
+        .task(id: taskId) {
+          await fetch()
         }
-      }
+        .refreshable {
+          taskId = .init()
+        }
+        .navigationTitle("grades.title")
     }
-    .task {
-      await fetch()
-    }
-    .refreshable {
-      await fetch()
-    }
-    .navigationTitle("grades.title")
   }
   
   func fetch() async {

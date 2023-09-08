@@ -58,7 +58,7 @@
 "error.network_error.desc" = "Connect to the internet";
 "error.unknown_error" = "Something bad happened";
 "error.unknown_error.desc" = "Try again later";
-"error.no_schedules" = "No courses for selected period";
+"error.no_schedules" = "No courses\nfor selected period";
 "error.no_schedules.desc" = "Try to change period";
 "error.no_education_level_specified" = "Specify your education level";
 "error.no_education_level_specified.desc" = "And then try again...";

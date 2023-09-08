@@ -38,14 +38,8 @@ struct DayViewSticker: View {
     .padding()
     .background(.black)
     .foregroundColor(.white)
-    #if os(iOS)
     .cornerRadius(10)
-    .padding(10)
-    .frame(maxWidth: 512, maxHeight: 512)
-    .scaledToFit()
-    #elseif os(macOS)
-    .frame(minWidth: 368)
-    #endif
+    .frame(minWidth: 512)
   }
 }
 
