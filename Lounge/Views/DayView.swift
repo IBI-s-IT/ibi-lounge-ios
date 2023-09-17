@@ -24,11 +24,31 @@ struct DayView: View {
   }
   
   var body: some View {
-    Section(getDateFormatted(day: day)) {
-      ForEach(day.lessons) { lesson in
-        LessonView(lesson: lesson)
+    VStack(alignment: .leading, spacing: 0) {
+      Text(getDateFormatted(day: day))
+        .font(.callout)
+        .foregroundStyle(day.date.isInSameDay(as: .now) ? .white : .secondary)
+        .padding(.horizontal, 10)
+        .padding(.vertical, 4)
+        .background(day.date.isInSameDay(as: .now) ? Color("AccentColor") : Color("AccentColor").opacity(0))
+        .cornerRadius(10)
+        .padding(.bottom, 8)
+      VStack {
+        ForEach(day.lessons) { lesson in
+          LessonView(lesson: lesson)
+          if day.lessons.last?.id != lesson.id {
+            Divider()
+          }
+        }
       }
+      .padding(.horizontal, 16)
+      .padding(.vertical, 12)
+      .background(.cardBackground)
+      .cornerRadius(10)
+      .shadow(color: .black.opacity(0.08), radius: 16, x: 0, y: 4)
+      .shadow(color: .black.opacity(0.08), radius: 2, x: 0, y: 0)
     }
+    .padding()
     .onAppear {
       #if os(iOS)
       image = Image(uiImage: render(
@@ -43,8 +63,8 @@ struct DayView: View {
       DayViewSticker(day: day)
     })
     .shadow(
-      color: .blue.opacity(lightIsOn ?? false ? 1 : 0),
-      radius: lightIsOn ?? false ? 20 : 0
+      color: Color("AccentColor").opacity(lightIsOn ?? false ? 0.42 : 0),
+      radius: lightIsOn ?? false ? 12 : 0
     )
     .id(day.date)
   }
@@ -52,7 +72,7 @@ struct DayView: View {
 
 struct DayView_Previews: PreviewProvider {
   static var previews: some View {
-    List() {
+    ScrollView() {
       DayView(
         day: Day(date: Date(), lessons: [
           Lesson(

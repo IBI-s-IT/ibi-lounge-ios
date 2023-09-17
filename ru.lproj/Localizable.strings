@@ -14,6 +14,8 @@
 
 "schedules.is_online" = "Онлайн";
 "schedules.place %@" = "🗺️ %@";
+"schedules.sg+o %@" = "Подгруппы: %@";
+"schedules.sg+m %@" = "Подгруппа: %@";
 
 "schedules.consultation" = "Консультация";
 "schedules.exam" = "Экзамен";

@@ -15,19 +15,24 @@ struct LoungeApp: App {
   
   var body: some Scene {
     WindowGroup {
-      ContentView()
-        .environmentObject(settings)
-        .environmentObject(weekStore)
-        .environmentObject(webView)
+      if let defaults = UserDefaults(suiteName: "group.space.utme.raspisansu.shared") {
+        ContentView()
+          .defaultAppStorage(defaults)
+          .environmentObject(settings)
+          .environmentObject(weekStore)
+          .environmentObject(webView)
+      } else {
+        Text("Failed to load defaults")
+      }
     }
     .commands {
       SidebarCommands()
     }
 #if os(macOS)
-    Settings {
-      SettingsView()
-        .environmentObject(settings)
-    }
+      Settings {
+        SettingsView()
+          .environmentObject(settings)
+      }
 #endif
+    }
   }
-}

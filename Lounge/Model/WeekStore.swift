@@ -27,7 +27,7 @@ class WeekStore: ObservableObject {
       calcWeeks(with: selectedDate)
     }
   }
-  @Published var isWholeWeek = false;
+  @AppStorage("wholeWeek") var isWholeWeek: Bool = false;
   
   init(with date: Date = Date()) {
     self.selectedDate = Calendar.current.startOfDay(for: date)

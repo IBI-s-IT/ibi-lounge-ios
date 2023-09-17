@@ -12,6 +12,8 @@
 "main.period" = "Period";
 
 "schedules.is_online" = "Online";
+"schedules.sg+o %@" = "Subgroups: %@";
+"schedules.sg+m %@" = "Subgroup: %@";
 
 "schedules.place %@" = "🗺️ %@";
 "schedules.consultation" = "Consultation";

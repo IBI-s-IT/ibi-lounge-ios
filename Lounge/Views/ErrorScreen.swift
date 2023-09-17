@@ -50,7 +50,7 @@ struct ErrorScreen: View {
 
 struct ErrorScreen_Previews: PreviewProvider {
   static var previews: some View {
-    ErrorScreen(icon: "gear", title: "title", description: "description", code: "123") {
+    ErrorScreen(icon: "gear", title: "Какая-то ошибка", description: "Описание этой ошибки", code: "123") {
       print("try")
     }
   }

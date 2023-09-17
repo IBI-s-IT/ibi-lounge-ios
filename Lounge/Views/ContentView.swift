@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-  @AppStorage("showOnboarding2") var showOnboarding = true
+  @AppStorage("showOnboarding3") var showOnboarding = true
   
   var body: some View {
 #if os(macOS)

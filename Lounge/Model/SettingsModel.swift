@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftUI
+import WidgetKit
 
 enum FieldValidation {
   case empty
@@ -23,19 +24,19 @@ enum EducationLevel: String, CaseIterable {
 }
 
 class SettingsModel: ObservableObject {
-  @AppStorage("group") var group: String = "2352"
-  @AppStorage("educationLevel") var educationLevel: EducationLevel = .undergraduate
-  @AppStorage("pin") var pin: String = "" {
+  @AppStorage("group1") var group: String = "2352"
+  @AppStorage("educationLevel1") var educationLevel: String = "1"
+  @AppStorage("pin1") var pin: String = "" {
     willSet {
       self.pinValidity = self.validatePin()
     }
   }
-  @AppStorage("lastName") var lastName: String = "" {
+  @AppStorage("lastName1") var lastName: String = "" {
     willSet {
       self.lastNameValidity = self.validateLastName()
     }
   }
-  @AppStorage("lastDate") var lastDate: Date = .now
+  @AppStorage("lastDate1") var lastDate: Date = .now
   private(set) var pinValidity: FieldValidation = .empty
   private(set) var lastNameValidity: FieldValidation = .empty
   

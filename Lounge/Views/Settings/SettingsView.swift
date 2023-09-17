@@ -8,9 +8,6 @@
 import SwiftUI
 
 struct SettingsView: View {
-  @EnvironmentObject var settings: SettingsModel;
-  @State var groups: GroupsResult = .error(.loading);
-  
   private enum Tabs: Hashable {
     case schedules, grades
   }
@@ -20,12 +17,6 @@ struct SettingsView: View {
     List {
       SchedulesSettings()
       GradesSettings()
-    }
-    .task {
-      await updateGroups()
-    }
-    .refreshable {
-      await updateGroups()
     }
     .navigationTitle("settings.title")
 #else
@@ -48,11 +39,6 @@ struct SettingsView: View {
     .padding()
     .frame(width: 375, height: 150)
 #endif
-  }
-  
-  func updateGroups() async {
-    self.groups = .error(.loading)
-    groups = await Requests().fetchGroups(educationLevel: settings.educationLevel)
   }
 }
 

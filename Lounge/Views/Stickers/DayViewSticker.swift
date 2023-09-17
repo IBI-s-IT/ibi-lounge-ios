@@ -39,7 +39,7 @@ struct DayViewSticker: View {
     .background(.black)
     .foregroundColor(.white)
     .cornerRadius(10)
-    .frame(minWidth: 512)
+    .frame(minWidth: 384)
   }
 }
 

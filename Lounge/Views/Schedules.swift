@@ -18,7 +18,7 @@ struct Schedules: View {
   func content() -> AnyView {
     switch days {
     case .response(let result):
-      return AnyView(List {
+      return AnyView(ScrollView {
         ForEach(result.response!, id: \.self.date) { day in
           DayView(
             day: day

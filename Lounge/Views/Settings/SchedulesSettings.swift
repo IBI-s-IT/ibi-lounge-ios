@@ -6,21 +6,32 @@
 //
 
 import SwiftUI
+import WidgetKit
 
 struct SchedulesSettings: View {
-  @EnvironmentObject var settings: SettingsModel;
-  @State var groups: GroupsResult = .error(.loading);
+  @EnvironmentObject var settings: SettingsModel
+  @State var levels: LevelsResult = .error(.loading)
+  @State var groups: GroupsResult = .error(.loading)
   
   var body: some View {
     Section("settings.section.schedule") {
-      Picker("settings.education_level", selection: $settings.educationLevel) {
-        ForEach(EducationLevel.allCases, id: \.self) { eduLevel in
-          Text(LocalizedStringKey(String(eduLevel.rawValue))).tag(eduLevel)
+      switch levels {
+      case .result(let levels):
+        Picker("settings.education_level", selection: $settings.educationLevel) {
+          ForEach(levels.response, id: \.id) { level in
+            Text(level.name).tag(level.id)
+          }
         }
-      }
-      .onChange(of: settings.educationLevel) { newEdu in
-        Task.init {
-          await updateGroups()
+        .onChange(of: settings.educationLevel) { _ in
+          Task.init {
+            await updateGroups()
+          }
+        }
+      case .error(let errors):
+        TransientStatusNew(error: errors) {
+          Task.init {
+            await updateLevels()
+          }
         }
       }
       switch groups {
@@ -29,6 +40,11 @@ struct SchedulesSettings: View {
           ForEach(result.response, id: \.id) { group in
             Text(group.name).tag(group.id)
           }
+        }
+        .onChange(of: settings.group) { newValue in
+          let defaults = UserDefaults(suiteName: "group.space.utme.raspisansu.shared")
+          defaults!.set(newValue, forKey: "group")
+          WidgetCenter.shared.reloadAllTimelines()
         }
       case .error(let error):
         TransientStatusNew(error: error) {
@@ -39,15 +55,17 @@ struct SchedulesSettings: View {
       }
     }
     .task {
-      await updateGroups()
-    }
-    .refreshable {
-      await updateGroups()
+      await updateLevels();
+      await updateGroups();
     }
   }
   
   func updateGroups() async {
-    groups = await Requests().fetchGroups(educationLevel: settings.educationLevel)
+    groups = await Requests().fetchGroups(level_id: settings.educationLevel)
+  }
+  
+  func updateLevels() async {
+    levels = await Requests().fetchLevels()
   }
 }
 

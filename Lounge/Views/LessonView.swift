@@ -74,10 +74,24 @@ struct LessonView: View {
             Text("🤨")
           }
         }
+        
+        if lesson.additional?.compiledSubgroups != nil {
+          HStack {
+
+            if (lesson.additional?.subgroup!.count)! >= 2 {
+              Text("schedules.sg+o \(lesson.additional!.compiledSubgroups!)")
+              Text("👥")
+            } else {
+              Text("schedules.sg+m \(lesson.additional!.compiledSubgroups!)")
+              Text("👤")
+            }
+            
+            
+          }
+          
+        }
       }
       .font(.footnote)
-      .imageScale(.medium)
-      .symbolRenderingMode(.multicolor)
       
       if lesson.additional?.url != nil {
         Image(systemName: "chevron.right")
@@ -158,6 +172,8 @@ struct LessonView_Previews: PreviewProvider {
               AdditionalLesson(
                 is_online: false,
                 type: LessonType.project_work,
+                subgroup: ["1", "2"],
+                group: ["A"],
                 location: "МС-45",
                 teacher_name: "Андреев И.В."
               )
@@ -173,6 +189,8 @@ struct LessonView_Previews: PreviewProvider {
               AdditionalLesson(
                 is_online: false,
                 type: LessonType.subject_report,
+                subgroup: ["1"],
+                group: ["B"],
                 teacher_name: "Андреев И.В."
               )
           )

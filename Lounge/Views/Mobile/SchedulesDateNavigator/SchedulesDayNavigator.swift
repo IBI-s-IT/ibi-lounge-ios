@@ -27,7 +27,7 @@ struct SchedulesDayNavigator: View {
           switch days {
           case .response(let result):
             AnyView(
-              List {
+              ScrollView {
                 ForEach(result.response!, id: \.self.date) { day in
                   DayView(
                     day: day,

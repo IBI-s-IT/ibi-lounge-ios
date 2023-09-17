@@ -7,9 +7,13 @@
 
 import Foundation
 
-let schedulesEndpoint = "https://rasp-back.utme.space/schedules";
-let groupsEndpoint = "https://rasp-back.utme.space/groups";
-let gradesEndpoint = "https://rasp-back.utme.space/grades"
+let domain = "https://rasp-back-testing.utme.space";
+let schedulesEndpoint = "\(domain)/schedules";
+let groupsEndpoint = "\(domain)/groups";
+let gradesEndpoint = "\(domain)/grades"
+let levelsEndpoint = "\(domain)/levels"
+
+// MARK: Groups
 
 struct Groups: Codable {
   var response: [EduGroup];
@@ -24,6 +28,24 @@ enum GroupsResult {
   case result(Groups)
   case error(Errors)
 }
+
+// MARK: Levels
+
+struct Levels: Codable {
+  var response: [Level];
+}
+
+struct Level: Codable {
+  var name: String
+  var id: String;
+}
+
+enum LevelsResult {
+  case result(Levels)
+  case error(Errors)
+}
+
+// MARK: Grades
 
 struct Grades: Codable {
   var response: [Grade];
@@ -68,6 +90,8 @@ enum GradesResult {
   case error(Errors)
 }
 
+// MARK: Schedules
+
 struct Days: Codable {
   var response: [Day]?;
 }
@@ -90,7 +114,7 @@ struct Lesson: Codable, Identifiable {
   var additional: AdditionalLesson?;
   
   var id: String {
-    time_start.formatted(date: .numeric, time: .shortened) + (additional?.teacher_name ?? text)
+    return "\(time_start.formatted(date: .numeric, time: .shortened))t\(additional?.teacher_name ?? text)s\(additional?.subgroup?.first ?? "NS")g\(additional?.group?.first ?? "NG")"
   }
   
   enum CodingKeys: CodingKey {
@@ -106,15 +130,29 @@ struct AdditionalLesson: Codable, Identifiable {
   var is_online: Optional<Bool>;
   var url: String?;
   var type: LessonType?;
-  var subgroup: String?;
+  var subgroup: [String]?;
+  var group: [String]?;
   var location: String?;
   var teacher_name: String?;
   var custom_time: CustomTime?;
+  
+  var compiledSubgroups: String? {
+    if subgroup != nil && group != nil {
+      let groups = subgroup?.compactMap({ sg in
+        return sg + group!.first!
+      })
+      
+      return groups?.joined(separator: ", ")
+    }
+    
+    return nil;
+  }
   
   enum CodingKeys: CodingKey {
     case is_online
     case url
     case type
+    case group
     case subgroup
     case location
     case teacher_name
@@ -233,12 +271,16 @@ class Requests {
     decoder.dateDecodingStrategy = .formatted(DateFormatter.iso8601Full);
   }
   
-  func fetchSchedules(from: Date = .now, to: Date = .now, group: String = "2352") async -> DaysRequestResult {
+  func fetchSchedules(from: Date = .now, to: Date = .now, group: String?) async -> DaysRequestResult {
     let dateFormatter = DateFormatter()
     dateFormatter.dateFormat = "dd.MM.YYYY";
     
+    guard group != nil else {
+      return .error(.bad_error);
+    }
+    
     do {
-      guard let url = URL(string: "\(schedulesEndpoint)?dateStart=\(dateFormatter.string(from: from))&dateEnd=\(dateFormatter.string(from: to))&group=\(group)") else {
+      guard let url = URL(string: "\(schedulesEndpoint)?dateStart=\(dateFormatter.string(from: from))&dateEnd=\(dateFormatter.string(from: to))&group=\(group!)") else {
         fatalError("Missing URL")
       }
       let urlRequest = URLRequest(url: url)
@@ -267,9 +309,9 @@ class Requests {
     }
   }
   
-  func fetchGroups(educationLevel: EducationLevel) async -> GroupsResult {
+  func fetchGroups(level_id: String) async -> GroupsResult {
     do {
-      guard let url = URL(string: "\(groupsEndpoint)?education_level=\(educationLevel.rawValue)") else {
+      guard let url = URL(string: "\(groupsEndpoint)?level_id=\(level_id)") else {
         fatalError("Missing URL")
       }
       
@@ -335,6 +377,40 @@ class Requests {
         }
       } else {
         print("[fetchGrades] Error fetching data from rasp-back: \(error)")
+        return .error(.bad_error)
+      }
+    }
+  }
+  
+  func fetchLevels() async -> LevelsResult {
+    do {
+      guard let url = URL(string: levelsEndpoint) else {
+        fatalError("Missing URL")
+      }
+      
+      let urlRequest = URLRequest(url: url)
+      
+      let (data, response) = try await URLSession.shared.data(for: urlRequest)
+      guard (response as? HTTPURLResponse)?.statusCode == 200 else {
+        return .error(.bad_error)
+      }
+      
+      let decoder = JSONDecoder()
+      let decodedData = try decoder.decode(Levels.self, from: data)
+      
+      return .result(decodedData)
+    } catch {
+      if let err = error as? URLError {
+        switch err.code {
+        case URLError.Code.notConnectedToInternet:
+          return .error(.network_error)
+        case URLError.Code.timedOut:
+          return .error(.timed_out)
+        default:
+          return .error(.unknown_error);
+        }
+      } else {
+        print("[fetchGroups] Error fetching data from rasp-back: \(error)")
         return .error(.bad_error)
       }
     }

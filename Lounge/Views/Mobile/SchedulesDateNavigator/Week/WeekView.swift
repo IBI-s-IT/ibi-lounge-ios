@@ -24,7 +24,7 @@ struct WeekView: View {
             .frame(maxWidth: .infinity)
         }
         .frame(width: 40, height: 40)
-        .background(week.dates[i] == week.referenceDate ? .blue : .background)
+        .background(week.dates[i] == week.referenceDate ? Color("AccentColor") : .background)
         .foregroundColor(week.dates[i] == week.referenceDate ? .white : .primary)
         .cornerRadius(10)
         .shadow(color: .black.opacity(0.06), radius: 4)

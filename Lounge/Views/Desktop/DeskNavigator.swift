@@ -94,7 +94,7 @@ struct DeskNavigator: View {
       #if os(macOS)
       .toolbar {
         ToolbarItem(placement: .automatic) {
-          SettingsLink()
+          SettingsButton()
         }
       }
       .navigationSplitViewColumnWidth(178)

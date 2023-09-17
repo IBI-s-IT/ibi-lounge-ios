@@ -10,11 +10,11 @@ import SwiftUI
 
 extension View {
   func widgetBackground(_ color: Color) -> some View {
-    //if #available(iOSApplicationExtension 17.0, macOSApplicationExtension 14.0, *) {
-    //  return containerBackground(color, for: .widget)
-    //} else {
+    if #available(iOSApplicationExtension 17.0, macOSApplicationExtension 14.0, *) {
+      return containerBackground(color, for: .widget)
+    } else {
       return background(color)
-    //}
+    }
   }
 }
 
@@ -45,26 +45,31 @@ struct DailyWidgetTimelineProvider: TimelineProvider {
   
   // Provides a timeline entry that represents the current time and state of a widget.
   func getSnapshot(in context: Context, completion: @escaping (DailyWidgetTimelineEntry) -> Void) {
-    func getSnapshot(in context: Context, completion: @escaping (DailyWidgetTimelineEntry) -> Void) {
-      completion(
-        DailyWidgetTimelineEntry(
-          date: Date(),
-          lessons: [.init(text: "ЛинАлгИГеом", time_start: .now, time_end: .now, additional: .init(is_online: false, type: .consultation, location: "МС-34", teacher_name: "Павлушков И.В."))],
-          error: nil,
-          dayIndex: 0,
-          isEmpty: false,
-          left: 0
-        )
+    completion(
+      DailyWidgetTimelineEntry(
+        date: Date(),
+        lessons: [.init(text: "ЛинАлгИГеом", time_start: .now, time_end: .now, additional: .init(is_online: false, type: .consultation, location: "МС-34", teacher_name: "Павлушков И.В."))],
+        error: nil,
+        dayIndex: 0,
+        isEmpty: false,
+        left: 0
       )
-    }
+    )
   }
   
+  private func getGroup() -> String {
+    let defaults = UserDefaults(suiteName: "group.space.utme.raspisansu.shared")
+    let group = defaults?.string(forKey: "group") ?? "2352"
+    
+    print("Group now is \(group)")
+    return group;
+  }
+
   // Provides an array of timeline entries for the current time and, optionally, any future times to update a widget.
   func getTimeline(in context: Context, completion: @escaping (Timeline<DailyWidgetTimelineEntry>) -> Void) {
-    let settings = SettingsModel()
-    Task {
+    Task.init {
       do {
-        let result = await Requests().fetchSchedules(from: .now, to: Date().advanced(by: 3600 * 24), group: settings.group);
+        let result = await Requests().fetchSchedules(from: .now, to: Date().advanced(by: 3600 * 24), group: getGroup());
         
         switch result {
         case .error(let error):
@@ -169,6 +174,6 @@ struct DailyWidget: Widget {
       .configurationDisplayName("widget.name")
       .description("widget.description")
       .supportedFamilies([.systemSmall, .systemMedium])
-//      .contentMarginsDisabled()
+      .contentMarginsDisabled()
   }
 }
